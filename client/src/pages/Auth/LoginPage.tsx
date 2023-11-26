@@ -78,11 +78,9 @@ export default function LoginPage(): React.ReactElement {
       </p>
       <div style={isModalOpen ? { top: '50%' } : { top: '150%' }} className={styles.modal}>
         <p>Looks like your problem. Create a new account then.</p>
-        <div className={styles.modal__buttons}>
-          <button onClick={() => navigate('/signup')} className={styles.modal__button}>
-            Sign In
-          </button>
-        </div>
+        <button onClick={() => navigate('/signup')} className={styles.modal__button}>
+          Sign In
+        </button>
       </div>
       {isModalOpen && <div onClick={() => setIsModalOpen(false)} className={styles.modal__dim}></div>}
 
