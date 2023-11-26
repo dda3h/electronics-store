@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__svg {
+    width: 1.8rem;
+  }
+
+  &__title {
+    position: relative;
+
+    font-size: 1.3rem;
+    font-weight: 400;
+
+    span {
+      position: absolute;
+      transform: translateX(4px);
+
+      font-size: 0.8rem;
+      font-weight: 600;
+
+      user-select: none;
+    }
+  }
+}
+
+.clear {
+  display: flex;
+  align-items: center;
+
+  opacity: 0.5;
+  transition: opacity 0.2s ease-out;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__svg {
+    width: 1.2rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+  }
+}

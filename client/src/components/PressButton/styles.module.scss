@@ -1,0 +1,19 @@
+.button {
+  text-align: center;
+
+  padding: 0.5rem 1rem;
+  width: 100%;
+
+  border-radius: 12px;
+  box-shadow: 0 5px 0 #aaa;
+  background-color: #ddd;
+  color: #222;
+  transition: all 0.1s ease-out;
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    box-shadow: 0 0 0 #aaa;
+    transform: translateY(5px);
+  }
+}

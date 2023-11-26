@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  justify-content: end;
+
+  @media (max-width: 575px) {
+    justify-content: center;
+  }
+}
+
+.numbers {
+  display: flex;
+  column-gap: 0.3rem;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  color: #747474;
+  transition: border-color 0.1s ease-out;
+  user-select: none;
+  cursor: pointer;
+
+  &:not(.button--active):not(.borderless):hover {
+    border: 2px solid #747474;
+  }
+
+  &--active {
+    border: 2px solid #000;
+    color: #000;
+    cursor: default;
+  }
+
+  &--disabled {
+    cursor: default;
+  }
+
+  &-arrow {
+    width: 1.5rem;
+    opacity: 0.5;
+    transition: opacity 0.1s ease-out;
+
+    &:not(.button--disabled):hover {
+      opacity: 1;
+    }
+  }
+}

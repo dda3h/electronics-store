@@ -1,0 +1,9 @@
+.wrapper {
+  margin: 0.8rem 5rem;
+  display: grid;
+  row-gap: 0.7rem;
+
+  @media (max-width: 992px) {
+    margin: 0.8rem 0;
+  }
+}

@@ -1,0 +1,147 @@
+.mobileFilters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.3rem 0;
+
+  &__displayTypeIcon {
+    width: 2rem;
+  }
+}
+
+.mobileSortButton {
+  span {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      border: 4px solid transparent;
+
+      border-top: 0 solid transparent;
+      border-bottom: 5px solid #242424;
+      margin-top: 4px;
+      margin-left: 5px;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.sortMenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 1.5rem;
+
+  text-align: center;
+
+  border-radius: 12px 12px 0 0;
+
+  background-color: #fff;
+
+  transition: bottom 0.2s ease-out;
+
+  z-index: 11;
+}
+
+.sorts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  padding-bottom: 1.5rem;
+}
+
+.sort {
+  width: 100%;
+  padding: 7px 0;
+
+  border-radius: 8px;
+  transition: all 0.2s ease-out;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e8e8f0;
+  }
+
+  &--active {
+    background-color: #f1f1f5;
+  }
+}
+
+.sortDoneButton {
+  width: 100%;
+  padding: 7px 0;
+
+  border-radius: 8px;
+  background-color: #f1f1f5;
+  transition: all 0.2s ease-out;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e8e8f0;
+  }
+}
+
+.allFilters {
+  user-select: none;
+  z-index: 10;
+
+  &__icon {
+    width: 1.8rem;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    column-gap: 0.2rem;
+
+    padding: 0.3rem;
+
+    cursor: pointer;
+  }
+
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #242424;
+    opacity: 0.3;
+
+    z-index: 9;
+  }
+}
+
+.filterCount {
+  position: absolute;
+  top: 3px;
+  right: -2px;
+
+  padding: 8px;
+
+  background-color: #808080;
+
+  border-radius: 50%;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #fff;
+  }
+}

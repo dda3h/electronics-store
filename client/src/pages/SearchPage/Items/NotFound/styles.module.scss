@@ -1,0 +1,19 @@
+.notFoundHeader {
+  font-weight: 600;
+}
+
+.notFoundTip {
+  font-weight: 300;
+
+  span {
+    border-bottom: 1px dashed;
+    opacity: 0.6;
+    transition: opacity 0.1s ease-out;
+
+    &:hover {
+      opacity: 1;
+      user-select: none;
+      cursor: pointer;
+    }
+  }
+}

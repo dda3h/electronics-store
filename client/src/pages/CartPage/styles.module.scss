@@ -1,0 +1,42 @@
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  max-width: 900px;
+
+  font-weight: 300;
+}
+
+.items {
+  display: grid;
+  row-gap: 1rem;
+}
+
+.buyButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem auto 1rem;
+
+  padding: 0.5rem;
+  width: 60%;
+
+  font-weight: 700;
+  border-radius: 12px;
+  background-color: #6c757d;
+  box-shadow: 0 5px 0 #495057;
+  color: #fff;
+  transition: all 0.1s ease-out;
+  cursor: pointer;
+  user-select: none;
+
+  &:active {
+    box-shadow: 0 0 0 #575757;
+    transform: translateY(5px);
+  }
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
+}

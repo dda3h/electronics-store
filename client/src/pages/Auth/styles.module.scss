@@ -1,0 +1,167 @@
+.wrapper {
+  max-width: 400px;
+  margin: 3.5rem auto;
+  padding: 0 1rem;
+
+  @media (max-width: 575px) {
+    margin: 1rem auto;
+  }
+}
+
+.intro {
+  text-align: center;
+
+  margin-bottom: 1.2rem;
+
+  &__logo {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+    user-select: none;
+  }
+
+  &__text {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+}
+
+.description {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-bottom: 0.4rem;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.svg {
+  position: absolute;
+  left: 0.9rem;
+  top: 48%;
+  transform: translateY(-50%);
+
+  fill: #afb3b6;
+  transition: fill 0.2s ease-out;
+
+  &--active {
+    fill: #6c7275;
+  }
+}
+
+.hidePasswordSvg {
+  position: absolute;
+  right: 0.9rem;
+  top: 48%;
+  transform: translateY(-50%);
+
+  width: 1rem;
+  color: rgb(175, 179, 182);
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+
+  font-size: 0.8rem;
+  padding: 0 2.7rem;
+  border-radius: 12px;
+  background-color: #f3f5f7;
+  border: 2px solid #f3f5f7;
+  transition: background-color 0.3s ease-out;
+
+  &::placeholder {
+    color: #5a5c5e;
+  }
+
+  &:focus {
+    background-color: #f8f9fa;
+  }
+}
+
+.smallText {
+  font-size: 0.8rem;
+}
+
+.signup {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.link {
+  color: hsla(209, 100%, 50%, 0.9);
+  user-select: none;
+  cursor: pointer;
+}
+
+.button {
+  width: 100%;
+  height: 2.8rem;
+
+  margin: 0.7rem 0;
+
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  border-radius: 12px;
+  background-color: #0084ff;
+  color: #fff;
+  user-select: none;
+  cursor: pointer;
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  padding: 1rem;
+
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  transition: top 0.2s ease-out;
+  z-index: 2;
+
+  &__buttons {
+    display: flex;
+    justify-content: right;
+    column-gap: 0.5rem;
+  }
+
+  &__button {
+    @extend .button;
+    margin: 0.7rem 0 0;
+
+    width: 30%;
+    white-space: nowrap;
+    height: 2rem;
+
+    font-weight: 400;
+    transition: background-color 0.2s ease-out;
+    background-color: #d1d4d6;
+    color: #000;
+
+    &:hover {
+      background-color: #c1c3c5;
+    }
+  }
+
+  &__dim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: #242424;
+    opacity: 0.3;
+  }
+}
