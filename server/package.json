@@ -5,8 +5,8 @@
     "build": "rimraf dist && npx tsc",
     "prestart": "npm run build",
     "start": "node --env-file .env dist/src/index.js",
-    "preserve": "npm run build",
-    "serve": "concurrently \"npx tsc -w\" \"node --env-file .env --watch dist/src/index.js\""
+    "predev": "npm run build",
+    "dev": "concurrently \"npx tsc -w\" \"node --env-file .env --watch dist/src/index.js\""
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

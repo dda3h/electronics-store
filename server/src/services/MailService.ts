@@ -11,6 +11,7 @@ const transporter: Transporter = nodemailer.createTransport({
 } as TransportOptions);
 
 export const sendVerificationMail = async (to: string, link: string) => {
+  // Proper email needed to use it. It will give an error without email data in .env
   try {
     await transporter.sendMail({
       from: process.env.SMTP_USER,

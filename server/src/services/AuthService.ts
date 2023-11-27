@@ -23,8 +23,7 @@ export const registration = async (name: string, email: string, password: string
 
   const user = await UsersDB.createUser(name, email, hashPassword, verificationLink);
 
-  // Proper email needed to use it. It will give an error without email data in .env
-  //await MailService.sendVerificationMail(email, `${process.env.SERVER_URL}/auth/verify/${verificationLink}`);
+  await MailService.sendVerificationMail(email, `${process.env.SERVER_URL}/auth/verify/${verificationLink}`);
 
   const userDto = new UserDto(user);
 
