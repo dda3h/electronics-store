@@ -47,7 +47,7 @@ export default function AccountPage(): React.ReactElement {
         </div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div className={styles.buttons}>
         <button onClick={logout} className={styles.logoutButton}>
           Logout
         </button>
