@@ -23,6 +23,22 @@ Electronics Store is my pet project. My inspiration for it was a few popular onl
 
 # How to run it locally
 
+## Docker Compose
+
+Run these commands:
+
+```
+docker-compose build
+```
+
+```
+docker-compose up
+```
+
+The project should be running on [localhost:3000](http://localhost:3000).
+
+## Manual
+
 In both client and server folders run these commands:
 
 1. Run `npm install` or `yarn` to install project dependencies.

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./mysql_init_scripts:/docker-entrypoint-initdb.d
+
+  server:
+    build: server/
+    environment:
+      MYSQL_HOST: '172.17.0.1'
+    ports:
+      - 5000:5000
+    depends_on:
+      - database
+
+  client:
+    build: client/
+    network_mode: host
+    depends_on:
+      - server
