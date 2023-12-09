@@ -24,8 +24,6 @@
   border-radius: 50%;
   color: #747474;
   transition: border-color 0.1s ease-out;
-  user-select: none;
-  cursor: pointer;
 
   &:not(.button--active):not(.borderless):hover {
     border: 2px solid #747474;

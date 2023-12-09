@@ -24,11 +24,11 @@ export default function Header(): React.ReactElement {
         </h1>
       </div>
 
-      <div onClick={() => dispatch(clearCart())} className={styles.clear}>
+      <button onClick={() => dispatch(clearCart())} className={styles.clear}>
         <TrashSVG className={styles.clear__svg} />
 
         <h1 className={styles.clear__title}>Clear cart</h1>
-      </div>
+      </button>
     </div>
   );
 }

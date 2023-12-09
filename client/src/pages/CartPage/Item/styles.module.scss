@@ -23,8 +23,6 @@
     height: 5rem;
 
     border-radius: 12px;
-    user-select: none;
-    cursor: pointer;
   }
 
   &__text {
@@ -81,9 +79,7 @@
 
   border: 1px solid #222;
   border-radius: 50%;
-  cursor: pointer;
   transition: background-color 0.1s ease-out;
-  user-select: none;
 
   &:hover {
     background-color: #dadada;

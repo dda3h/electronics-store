@@ -71,11 +71,11 @@ export default function LoginPage(): React.ReactElement {
         </button>
       </div>
 
-      <p>
+      <button>
         <span onClick={() => setIsModalOpen(true)} className={`${styles.smallText} ${styles.link}`}>
           Forgot password?
         </span>
-      </p>
+      </button>
       <div style={isModalOpen ? { top: '50%' } : { top: '-50%' }} className={styles.modal}>
         <p>Looks like your problem. Create a new account then.</p>
         <button onClick={() => navigate('/signup')} className={styles.modal__button}>

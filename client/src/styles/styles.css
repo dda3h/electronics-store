@@ -8,6 +8,16 @@ html {
   font-size: calc(15px + 0.390625vw);
 }
 
+img {
+  user-select: none;
+}
+
+a,
+button {
+  user-select: none;
+  cursor: pointer;
+}
+
 /* Sticky footer */
 
 html,

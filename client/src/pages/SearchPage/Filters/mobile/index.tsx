@@ -59,12 +59,12 @@ export default function FiltersMobile({ activeFilter, setActiveFilter, allFilter
         <div style={isSortOpen ? { bottom: '0' } : { bottom: '-200%' }} className={styles.sortMenu}>
           <div className={styles.sorts}>
             {sortList.map((sort, index) => (
-              <p
+              <button
                 onClick={() => changeSort(index)}
                 className={`${styles.sort} ${sortParam === sort ? styles['sort--active'] : ''}`}
                 key={index}>
                 {sort}
-              </p>
+              </button>
             ))}
           </div>
 

@@ -17,7 +17,6 @@
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1.8rem;
-    user-select: none;
   }
 
   &__text {
@@ -91,8 +90,6 @@
 
 .link {
   color: hsla(209, 100%, 50%, 0.9);
-  user-select: none;
-  cursor: pointer;
 }
 
 .button {
@@ -108,8 +105,6 @@
   border-radius: 12px;
   background-color: #0084ff;
   color: #fff;
-  user-select: none;
-  cursor: pointer;
 
   &:active {
     position: relative;
