@@ -12,15 +12,6 @@
 
 Electronics Store is my pet project. My inspiration for it was a few popular online stores. The project features the ability to add items to the cart, an account system<!-- for saving the cart -->, search for items with filters, and more.
 
-# Features
-
-- items search, filters and sort
-- minimalistic design
-- cart
-- browse through a variety of interesting items
-- account system
-- and much more
-
 # How to run it locally
 
 ## Docker Compose
@@ -46,34 +37,7 @@ In both client and server folders run these commands:
 
 The project should be running on [localhost:3000](http://localhost:3000). Everything should work except the account system.
 
-To be able to log into the account you must be running a MySQL database. If you have one, enter there the following commands to configure the database and create the required tables:
-
-```SQL
-CREATE DATABASE electronics_store;
-```
-
-```SQL
-USE electronics_store;
-```
-
-```SQL
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(16) NOT NULL,
-  email VARCHAR(32) NOT NULL,
-  password VARCHAR(60) NOT NULL,
-  verification_link VARCHAR(36) NOT NULL,
-  is_verified TINYINT(1) DEFAULT 0
-);
-```
-
-```SQL
-CREATE TABLE tokens (
-  user_id INT NOT NULL PRIMARY KEY,
-  refresh_token VARCHAR(500) NOT NULL,
-  CONSTRAINT user_id_fk FOREIGN KEY (user_id) REFERENCES users (id)
-);
-```
+To be able to log into the account you must be running a MySQL database. If you have one, enter there the commands from the [mysql_init_scripts/init.sql](https://github.com/nentennens/electronics_store/blob/master/mysql_init_scripts/init.sql) file to configure the database and create the required tables.
 
 You may also need to change the password for the database or some other variables in server .env, depending on your setup.
 
