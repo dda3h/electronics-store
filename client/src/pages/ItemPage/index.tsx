@@ -15,7 +15,7 @@ export default function ItemPage(): React.ReactElement {
   const params = useParams();
   const dispatch = useAppDispatch();
 
-  const item = useSelector(getItemsArray).filter((item) => item.id === Number(params.id))[0];
+  const item = useSelector(getItemsArray).find((item) => item.id === Number(params.id));
   const status = useSelector(getItemsStatus);
 
   const cartItems = useSelector(getCartItems);
@@ -27,6 +27,7 @@ export default function ItemPage(): React.ReactElement {
 
   if (status === Status.REJECTED) return <h1 className={styles.statusHeader}>Failed to get the item :(</h1>;
   if (status === Status.PENDING) return <h1 className={styles.statusHeader}>Loading...</h1>;
+  if (item === undefined) return <h1 className={styles.statusHeader}>There is no item with ID {params.id}</h1>;
 
   return (
     <>

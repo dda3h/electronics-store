@@ -45,7 +45,7 @@ export const useRegistration = () => {
 export const useLogout = () => {
   const dispatch = useDispatch();
 
-  const registration = async () => {
+  const logout = async () => {
     try {
       await AuthService.logout();
       localStorage.removeItem('accessToken');
@@ -56,7 +56,7 @@ export const useLogout = () => {
     }
   };
 
-  return registration;
+  return logout;
 };
 
 export const useCheckAuth = () => {
