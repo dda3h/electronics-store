@@ -48,7 +48,7 @@ export default function SignupPage(): React.ReactElement {
         <input
           type="text"
           value={name}
-          onChange={(effect) => setName(effect.target.value)}
+          onChange={(event) => setName(event.target.value)}
           placeholder="Name"
           className={styles.input}
         />
