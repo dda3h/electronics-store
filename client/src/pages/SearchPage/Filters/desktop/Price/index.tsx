@@ -43,7 +43,7 @@ export default function PriceFilter({ closeFilter }: { closeFilter: Function }):
           <input
             type="text"
             value={inputFrom}
-            onChange={(event) => setInputFrom(event.target.value.replace(/\D/g, ''))}
+            onChange={(e) => setInputFrom(e.target.value.replace(/\D/g, ''))}
             className={styles.input}
           />
         </div>
@@ -54,7 +54,7 @@ export default function PriceFilter({ closeFilter }: { closeFilter: Function }):
           <input
             type="text"
             value={inputTo}
-            onChange={(event) => setInputTo(event.target.value.replace(/\D/g, ''))}
+            onChange={(e) => setInputTo(e.target.value.replace(/\D/g, ''))}
             className={styles.input}
           />
         </div>

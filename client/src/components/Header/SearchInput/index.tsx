@@ -47,8 +47,8 @@ export default function Search(): React.ReactElement {
         type="text"
         ref={searchInputRef}
         value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
-        onKeyDown={(event) => event.key === 'Enter' && handleSearch(event)}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={(e) => e.key === 'Enter' && handleSearch(e)}
         className={styles.input}
         placeholder="Search..."
       />

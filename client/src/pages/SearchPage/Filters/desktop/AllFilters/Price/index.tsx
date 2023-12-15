@@ -47,7 +47,7 @@ export default function PriceFilter(): React.ReactElement {
           <input
             type="text"
             value={inputFrom}
-            onChange={(event) => changePrices(event.target.value.replace(/\D/g, ''), 'min')}
+            onChange={(e) => changePrices(e.target.value.replace(/\D/g, ''), 'min')}
             className={styles.input}
           />
         </div>
@@ -58,7 +58,7 @@ export default function PriceFilter(): React.ReactElement {
           <input
             type="text"
             value={inputTo}
-            onChange={(event) => changePrices(event.target.value.replace(/\D/g, ''), 'max')}
+            onChange={(e) => changePrices(e.target.value.replace(/\D/g, ''), 'max')}
             className={styles.input}
           />
         </div>
