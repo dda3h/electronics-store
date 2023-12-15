@@ -1,42 +1,42 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import getPrices from '../../../hooks/usePrices';
+import getPrices from '../../../hooks/usePrices'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function PriceFilter(): React.ReactElement {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [minPrice, maxPrice] = getPrices();
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [minPrice, maxPrice] = getPrices()
 
-  const priceParam = searchParams.get('price');
+  const priceParam = searchParams.get('price')
 
-  const [inputFrom, setInputFrom] = React.useState<string>(minPrice);
-  const [inputTo, setInputTo] = React.useState<string>(maxPrice);
+  const [inputFrom, setInputFrom] = React.useState<string>(minPrice)
+  const [inputTo, setInputTo] = React.useState<string>(maxPrice)
 
-  const [update, setUpdate] = React.useState<boolean>(true);
+  const [update, setUpdate] = React.useState<boolean>(true)
 
   const changePrices = async (value: string, type: 'min' | 'max') => {
-    if (type === 'min') setInputFrom(value);
-    if (type === 'max') setInputTo(value);
+    if (type === 'min') setInputFrom(value)
+    if (type === 'max') setInputTo(value)
 
-    setUpdate(!update);
-  };
+    setUpdate(!update)
+  }
 
   React.useEffect(() => {
-    const isNotEmpty = inputFrom && inputTo;
-    const areThereAnyChanges = inputFrom !== minPrice || inputTo !== maxPrice;
+    const isNotEmpty = inputFrom && inputTo
+    const areThereAnyChanges = inputFrom !== minPrice || inputTo !== maxPrice
 
     if (isNotEmpty && (areThereAnyChanges || priceParam)) {
-      searchParams.set('price', `${inputFrom}-${inputTo}`);
-      setSearchParams(searchParams);
+      searchParams.set('price', `${inputFrom}-${inputTo}`)
+      setSearchParams(searchParams)
     }
-  }, [update]);
+  }, [update])
 
   React.useEffect(() => {
-    setInputFrom(priceParam?.split('-')[0].replace(/\D/g, '') || minPrice);
-    setInputTo(priceParam?.split('-')[1]?.replace(/\D/g, '') || maxPrice);
-  }, [minPrice, maxPrice, window.location.href]);
+    setInputFrom(priceParam?.split('-')[0].replace(/\D/g, '') || minPrice)
+    setInputTo(priceParam?.split('-')[1]?.replace(/\D/g, '') || maxPrice)
+  }, [minPrice, maxPrice, window.location.href])
 
   return (
     <>
@@ -64,5 +64,5 @@ export default function PriceFilter(): React.ReactElement {
         </div>
       </div>
     </>
-  );
+  )
 }

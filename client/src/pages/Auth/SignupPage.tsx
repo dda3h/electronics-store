@@ -1,35 +1,35 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { getIsLogged } from '../../redux/reducers/user/selectors';
+import { useSelector } from 'react-redux'
+import { getIsLogged } from '../../redux/reducers/user/selectors'
 
-import { AuthController } from '../../controllers';
+import { AuthController } from '../../controllers'
 
-import AddUserSVG from '../../icons/AddUser';
-import EmailSVG from '../../icons/Email';
-import LockSVG from '../../icons/Lock';
-import EyeSVG from '../../icons/Eye';
-import CrossedOutEyeSVG from '../../icons/CossedOutEye';
+import AddUserSVG from '../../icons/AddUser'
+import EmailSVG from '../../icons/Email'
+import LockSVG from '../../icons/Lock'
+import EyeSVG from '../../icons/Eye'
+import CrossedOutEyeSVG from '../../icons/CossedOutEye'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function SignupPage(): React.ReactElement {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const isLogged = useSelector(getIsLogged);
+  const isLogged = useSelector(getIsLogged)
 
-  const [name, setName] = React.useState<string>('');
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const [name, setName] = React.useState<string>('')
+  const [email, setEmail] = React.useState<string>('')
+  const [password, setPassword] = React.useState<string>('')
 
-  const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [showPassword, setShowPassword] = React.useState<boolean>(false)
 
-  const registration = AuthController.useRegistration();
+  const registration = AuthController.useRegistration()
 
   React.useEffect(() => {
-    if (isLogged) navigate('/account');
-  }, [isLogged]);
+    if (isLogged) navigate('/account')
+  }, [isLogged])
 
   return (
     <div className={styles.wrapper}>
@@ -98,5 +98,5 @@ export default function SignupPage(): React.ReactElement {
         </p>
       </div>
     </div>
-  );
+  )
 }

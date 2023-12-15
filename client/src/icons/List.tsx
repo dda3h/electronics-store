@@ -7,6 +7,6 @@ const ListSVG = ({ className }: { className?: string }) => (
     <line x1="8.5" y1="10" x2="15.5" y2="10" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
     <line x1="8.5" y1="14" x2="15.5" y2="14" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" />
   </svg>
-);
+)
 
-export default ListSVG;
+export default ListSVG

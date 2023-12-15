@@ -1,32 +1,32 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns';
+import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns'
 
-import useFilteredFilters from '../../hooks/useFilteredFilters';
-import useChangeFilter from '../../hooks/useChangeFilter';
+import useFilteredFilters from '../../hooks/useFilteredFilters'
+import useChangeFilter from '../../hooks/useChangeFilter'
 
-import CheckSVG from '../../../../../icons/Check';
+import CheckSVG from '../../../../../icons/Check'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  param: string;
-  list: 1 | 2;
-  closeFilter: () => void;
+  param: string
+  list: 1 | 2
+  closeFilter: () => void
 }
 
 export default function CheckFilter({ param, list, closeFilter }: Props): React.ReactElement {
-  const filterList = useFilteredFilters(list);
-  const changeFilter = useChangeFilter();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const filterList = useFilteredFilters(list)
+  const changeFilter = useChangeFilter()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const filterParam = searchParams.get(param);
+  const filterParam = searchParams.get(param)
 
   const resetFilter = () => {
-    searchParams.delete(param);
-    setSearchParams(searchParams);
-  };
+    searchParams.delete(param)
+    setSearchParams(searchParams)
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -39,7 +39,8 @@ export default function CheckFilter({ param, list, closeFilter }: Props): React.
                 ? `${styles.button} ${styles.button__active}`
                 : styles.button
             }
-            key={index}>
+            key={index}
+          >
             <span className={styles.button__check}>
               <CheckSVG />
             </span>
@@ -50,5 +51,5 @@ export default function CheckFilter({ param, list, closeFilter }: Props): React.
 
       <ResetAndDoneBtns condition={!!filterParam} resetFunc={resetFilter} doneFunc={closeFilter} />
     </div>
-  );
+  )
 }

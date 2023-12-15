@@ -8,6 +8,6 @@ const TelegramSVG = ({ className }: { className?: string }) => (
       d="M204 319l135 99c14 9 26 4 30-14l55-258c5-22-9-32-24-25L79 245c-21 8-21 21-4 26l83 26 190-121c9-5 17-3 11 4"
     />
   </svg>
-);
+)
 
-export default TelegramSVG;
+export default TelegramSVG

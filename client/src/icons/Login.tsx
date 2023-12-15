@@ -6,6 +6,6 @@ const LoginSVG = ({ className }: { className?: string }) => (
       </g>
     </g>
   </svg>
-);
+)
 
-export default LoginSVG;
+export default LoginSVG

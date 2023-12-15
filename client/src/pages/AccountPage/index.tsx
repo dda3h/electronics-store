@@ -1,23 +1,23 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { getIsLogged, getUser } from '../../redux/reducers/user/selectors';
+import { useSelector } from 'react-redux'
+import { getIsLogged, getUser } from '../../redux/reducers/user/selectors'
 
-import { AuthController } from '../../controllers';
+import { AuthController } from '../../controllers'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function AccountPage(): React.ReactElement {
-  const navigate = useNavigate();
-  const logout = AuthController.useLogout();
+  const navigate = useNavigate()
+  const logout = AuthController.useLogout()
 
-  const user = useSelector(getUser);
-  const isLogged = useSelector(getIsLogged);
+  const user = useSelector(getUser)
+  const isLogged = useSelector(getIsLogged)
 
   React.useEffect(() => {
-    if (!isLogged) navigate('/login');
-  }, [isLogged]);
+    if (!isLogged) navigate('/login')
+  }, [isLogged])
 
   return (
     <div className={styles.wrapper}>
@@ -57,5 +57,5 @@ export default function AccountPage(): React.ReactElement {
         </button>
       </div>
     </div>
-  );
+  )
 }

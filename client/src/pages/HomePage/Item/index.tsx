@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { TItem } from '../../../types.js';
+import { TItem } from '../../../types.js'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function Item(item: TItem): React.ReactElement {
   return (
@@ -23,5 +23,5 @@ export default function Item(item: TItem): React.ReactElement {
         <p className={styles.price}>${item.price}</p>
       </div>
     </Link>
-  );
+  )
 }

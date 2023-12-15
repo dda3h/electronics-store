@@ -8,6 +8,6 @@ const SearchSVG = ({ className }: { className?: string }) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default SearchSVG;
+export default SearchSVG

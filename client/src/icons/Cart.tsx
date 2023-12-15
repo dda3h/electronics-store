@@ -8,6 +8,6 @@ const CartSVG = ({ className }: { className?: string }) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default CartSVG;
+export default CartSVG

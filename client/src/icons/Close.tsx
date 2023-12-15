@@ -8,6 +8,6 @@ const CloseSVG = ({ className }: { className?: string }) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default CloseSVG;
+export default CloseSVG

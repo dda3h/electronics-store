@@ -1,24 +1,24 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import useFilteredFilters from '../../../hooks/useFilteredFilters';
-import useChangeFilter from '../../../hooks/useChangeFilter';
+import useFilteredFilters from '../../../hooks/useFilteredFilters'
+import useChangeFilter from '../../../hooks/useChangeFilter'
 
-import CheckSVG from '../../../../../../icons/Check';
+import CheckSVG from '../../../../../../icons/Check'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  param: string;
-  list: 1 | 2;
+  param: string
+  list: 1 | 2
 }
 
 export default function CheckFilter({ param, list }: Props): React.ReactElement {
-  const filterList = useFilteredFilters(list);
-  const changeFilter = useChangeFilter();
-  const [searchParams] = useSearchParams();
+  const filterList = useFilteredFilters(list)
+  const changeFilter = useChangeFilter()
+  const [searchParams] = useSearchParams()
 
-  const filterParams = searchParams.get(param);
+  const filterParams = searchParams.get(param)
 
   return (
     <div className={styles.wrapper}>
@@ -31,7 +31,8 @@ export default function CheckFilter({ param, list }: Props): React.ReactElement 
                 ? `${styles.button} ${styles.button__active}`
                 : styles.button
             }
-            key={index}>
+            key={index}
+          >
             <span className={styles.button__check}>
               <CheckSVG />
             </span>
@@ -40,5 +41,5 @@ export default function CheckFilter({ param, list }: Props): React.ReactElement 
         ))}
       </div>
     </div>
-  );
+  )
 }

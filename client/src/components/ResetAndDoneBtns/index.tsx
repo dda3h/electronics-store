@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  condition?: boolean;
-  firstButtonName?: string;
-  resetFunc?: () => void;
-  doneFunc?: () => void;
+  condition?: boolean
+  firstButtonName?: string
+  resetFunc?: () => void
+  doneFunc?: () => void
 }
 
 export default function ResetAndDoneBtns(props: Props): React.ReactElement {
@@ -22,5 +22,5 @@ export default function ResetAndDoneBtns(props: Props): React.ReactElement {
         Done
       </button>
     </div>
-  );
+  )
 }

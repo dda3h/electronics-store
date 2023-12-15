@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { useDispatch } from 'react-redux';
-import { addItem, removeItem, subItem } from '../../../redux/reducers/cart/slice';
-import { TItem } from '../../../types';
+import { useDispatch } from 'react-redux'
+import { addItem, removeItem, subItem } from '../../../redux/reducers/cart/slice'
+import { TItem } from '../../../types'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function Item(item: TItem & { quantity: number }): React.ReactElement {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   return (
     <div className={styles.wrapper}>
@@ -32,7 +32,8 @@ export default function Item(item: TItem & { quantity: number }): React.ReactEle
         <div className={styles.quantity}>
           <button
             onClick={() => item.quantity > 1 && dispatch(subItem(item))}
-            className={`${styles.button} ${item.quantity === 1 ? styles['button--disabled'] : ''}`}>
+            className={`${styles.button} ${item.quantity === 1 ? styles['button--disabled'] : ''}`}
+          >
             <span>-</span>
           </button>
 
@@ -50,5 +51,5 @@ export default function Item(item: TItem & { quantity: number }): React.ReactEle
         </button>
       </div>
     </div>
-  );
+  )
 }

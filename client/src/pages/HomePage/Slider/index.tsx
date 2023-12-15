@@ -1,28 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { slides } from './slides';
+import { slides } from './slides'
 
-import LeftArrow from '../../../icons/arrows/LeftArrow';
-import RightArrow from '../../../icons/arrows/RightArrow';
+import LeftArrow from '../../../icons/arrows/LeftArrow'
+import RightArrow from '../../../icons/arrows/RightArrow'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function Slider(): React.ReactElement {
-  const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
-  const autoNextTimer = React.useRef<number>(0);
+  const [activeSlideIndex, setActiveSlideIndex] = React.useState(0)
+  const autoNextTimer = React.useRef<number>(0)
 
   const changeImage = (type: 'next' | 'prev') => {
-    if (type === 'next' && activeSlideIndex === slides.length - 1) return setActiveSlideIndex(0);
-    if (type === 'prev' && activeSlideIndex === 0) return setActiveSlideIndex(slides.length - 1);
+    if (type === 'next' && activeSlideIndex === slides.length - 1) return setActiveSlideIndex(0)
+    if (type === 'prev' && activeSlideIndex === 0) return setActiveSlideIndex(slides.length - 1)
 
-    setActiveSlideIndex(activeSlideIndex + (type === 'next' ? 1 : -1));
-  };
+    setActiveSlideIndex(activeSlideIndex + (type === 'next' ? 1 : -1))
+  }
 
   React.useEffect(() => {
-    clearTimeout(autoNextTimer.current);
-    autoNextTimer.current = setTimeout(() => changeImage('next'), 5000);
-  }, [activeSlideIndex]);
+    clearTimeout(autoNextTimer.current)
+    autoNextTimer.current = setTimeout(() => changeImage('next'), 5000)
+  }, [activeSlideIndex])
 
   return (
     <div className={styles.wrapper}>
@@ -46,5 +46,5 @@ export default function Slider(): React.ReactElement {
 
       <Link to={slides[activeSlideIndex].link} className={styles.imageDim}></Link>
     </div>
-  );
+  )
 }

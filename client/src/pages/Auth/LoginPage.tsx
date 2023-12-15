@@ -1,33 +1,33 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { getIsLogged } from '../../redux/reducers/user/selectors';
+import { useSelector } from 'react-redux'
+import { getIsLogged } from '../../redux/reducers/user/selectors'
 
-import { AuthController } from '../../controllers';
+import { AuthController } from '../../controllers'
 
-import EmailSVG from '../../icons/Email';
-import LockSVG from '../../icons/Lock';
-import EyeSVG from '../../icons/Eye';
-import CrossedOutEyeSVG from '../../icons/CossedOutEye';
+import EmailSVG from '../../icons/Email'
+import LockSVG from '../../icons/Lock'
+import EyeSVG from '../../icons/Eye'
+import CrossedOutEyeSVG from '../../icons/CossedOutEye'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function LoginPage(): React.ReactElement {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const isLogged = useSelector(getIsLogged);
-  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false);
+  const isLogged = useSelector(getIsLogged)
+  const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 
-  const [email, setEmail] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
-  const [showPassword, setShowPassword] = React.useState<boolean>(false);
+  const [email, setEmail] = React.useState<string>('')
+  const [password, setPassword] = React.useState<string>('')
+  const [showPassword, setShowPassword] = React.useState<boolean>(false)
 
-  const login = AuthController.useLogin();
+  const login = AuthController.useLogin()
 
   React.useEffect(() => {
-    if (isLogged) navigate('/account');
-  }, [isLogged]);
+    if (isLogged) navigate('/account')
+  }, [isLogged])
 
   return (
     <div className={styles.wrapper}>
@@ -97,5 +97,5 @@ export default function LoginPage(): React.ReactElement {
         </p>
       </div>
     </div>
-  );
+  )
 }

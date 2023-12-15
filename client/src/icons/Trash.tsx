@@ -8,6 +8,6 @@ const TrashSVG = ({ className }: { className: string }) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default TrashSVG;
+export default TrashSVG

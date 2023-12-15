@@ -7,6 +7,6 @@ const HomeSVG = ({ className }: { className?: string }) => (
       fill="#000000"
     />
   </svg>
-);
+)
 
-export default HomeSVG;
+export default HomeSVG

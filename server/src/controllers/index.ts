@@ -1,2 +1,2 @@
-export * as ItemsController from './ItemsController.js';
-export * as AuthController from './AuthController.js';
+export * as ItemsController from './ItemsController.js'
+export * as AuthController from './AuthController.js'

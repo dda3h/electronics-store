@@ -19,6 +19,6 @@ const SettingsSVG = ({ className }: { className?: string }) => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default SettingsSVG;
+export default SettingsSVG

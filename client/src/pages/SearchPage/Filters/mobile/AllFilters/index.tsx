@@ -1,63 +1,63 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import PriceFilter from './Price';
-import Filter from './Filter';
+import PriceFilter from './Price'
+import Filter from './Filter'
 
-import useFilteredFilters from '../../hooks/useFilteredFilters';
-import useFilteredData from '../../../Items/useFilteredData';
+import useFilteredFilters from '../../hooks/useFilteredFilters'
+import useFilteredData from '../../../Items/useFilteredData'
 
-import CloseSVG from '../../../../../icons/Close';
+import CloseSVG from '../../../../../icons/Close'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  closeFilter: () => void;
-  activeFilter: number;
-  allFiltersIndex: number;
+  closeFilter: () => void
+  activeFilter: number
+  allFiltersIndex: number
 }
 
 export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex }: Props): React.ReactElement {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const filtersRef = React.useRef<HTMLDivElement>(null);
-  const [update, setUpdate] = React.useState<boolean>(true);
+  const filtersRef = React.useRef<HTMLDivElement>(null)
+  const [update, setUpdate] = React.useState<boolean>(true)
 
-  const priceParam = searchParams.get('price');
-  const categoryParam = searchParams.get('category');
-  const brandParam = searchParams.get('brand');
+  const priceParam = searchParams.get('price')
+  const categoryParam = searchParams.get('category')
+  const brandParam = searchParams.get('brand')
 
   const filterList = [
     { name: 'Price', param: 'price', condition: priceParam, component: <PriceFilter /> },
     { name: 'Category', param: 'category', condition: categoryParam, component: <Filter param="category" list={1} /> },
-    { name: 'Brand', param: 'brand', condition: brandParam, component: <Filter param="brand" list={2} /> },
-  ];
+    { name: 'Brand', param: 'brand', condition: brandParam, component: <Filter param="brand" list={2} /> }
+  ]
 
   const deleteParam = (param: string) => {
-    searchParams.delete('page');
-    searchParams.delete(param);
-    setSearchParams(searchParams);
-  };
+    searchParams.delete('page')
+    searchParams.delete(param)
+    setSearchParams(searchParams)
+  }
 
   const onClickReset = () => {
-    searchParams.delete('price');
-    searchParams.delete('category');
-    searchParams.delete('brand');
-    searchParams.delete('page');
-    setSearchParams(searchParams);
-  };
+    searchParams.delete('price')
+    searchParams.delete('category')
+    searchParams.delete('brand')
+    searchParams.delete('page')
+    setSearchParams(searchParams)
+  }
 
   const onClickDone = () => {
-    closeFilter();
-    setUpdate(!update);
-  };
+    closeFilter()
+    setUpdate(!update)
+  }
 
   React.useEffect(() => {
-    filtersRef.current?.scrollTo(0, 0);
+    filtersRef.current?.scrollTo(0, 0)
 
-    if (activeFilter === allFiltersIndex) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
-  }, [activeFilter]);
+    if (activeFilter === allFiltersIndex) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = 'auto'
+  }, [activeFilter])
 
   return (
     <div style={activeFilter === allFiltersIndex ? { right: '0' } : { right: '-100%' }} className={styles.wrapper}>
@@ -95,7 +95,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 
                 {filter.component}
               </div>
-            ),
+            )
         )}
       </div>
 
@@ -105,5 +105,5 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
         </button>
       </div>
     </div>
-  );
+  )
 }

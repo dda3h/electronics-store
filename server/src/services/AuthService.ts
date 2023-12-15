@@ -1,97 +1,97 @@
-import bcrypt from 'bcrypt';
-import { v4 as uuidv4 } from 'uuid';
+import bcrypt from 'bcrypt'
+import { v4 as uuidv4 } from 'uuid'
 
-import { UsersDB } from '../database/index.js';
-import { TokensDB } from '../database/index.js';
+import { UsersDB } from '../database/index.js'
+import { TokensDB } from '../database/index.js'
 
-import { MailService } from './index.js';
-import { TokenService } from './index.js';
+import { MailService } from './index.js'
+import { TokenService } from './index.js'
 
-import { UserDto } from '../dtos/user-dto.js';
+import { UserDto } from '../dtos/user-dto.js'
 
-import { ApiError } from '../exceptions/api-error.js';
+import { ApiError } from '../exceptions/api-error.js'
 
 export const registration = async (name: string, email: string, password: string) => {
-  const candidate = await UsersDB.getUserByEmail(email);
+  const candidate = await UsersDB.getUserByEmail(email)
 
   if (candidate) {
-    throw ApiError.BadRequest(`A user with the email address ${email} already exists.`);
+    throw ApiError.BadRequest(`A user with the email address ${email} already exists.`)
   }
 
-  const hashPassword = await bcrypt.hash(password, 3);
-  const verificationLink = uuidv4();
+  const hashPassword = await bcrypt.hash(password, 3)
+  const verificationLink = uuidv4()
 
-  const user = await UsersDB.createUser(name, email, hashPassword, verificationLink);
+  const user = await UsersDB.createUser(name, email, hashPassword, verificationLink)
 
-  await MailService.sendVerificationMail(email, `${process.env.SERVER_URL}/auth/verify/${verificationLink}`);
+  await MailService.sendVerificationMail(email, `${process.env.SERVER_URL}/auth/verify/${verificationLink}`)
 
-  const userDto = new UserDto(user);
+  const userDto = new UserDto(user)
 
-  const tokens = TokenService.generateTokens({ ...userDto });
-  await TokenService.saveToken(userDto.id, tokens.refreshToken);
+  const tokens = TokenService.generateTokens({ ...userDto })
+  await TokenService.saveToken(userDto.id, tokens.refreshToken)
 
-  return { ...tokens, user: userDto };
-};
+  return { ...tokens, user: userDto }
+}
 
 export const verify = async (verificationLink: string) => {
-  const user = await UsersDB.getUserByVerificationLink(verificationLink);
+  const user = await UsersDB.getUserByVerificationLink(verificationLink)
 
   if (!user) {
-    throw ApiError.BadRequest('Incorrect verification link');
+    throw ApiError.BadRequest('Incorrect verification link')
   }
 
-  user.is_verified = 1;
-  await UsersDB.updateUser(user);
-};
+  user.is_verified = 1
+  await UsersDB.updateUser(user)
+}
 
 export const login = async (email: string, password: string) => {
-  const user = await UsersDB.getUserByEmail(email);
+  const user = await UsersDB.getUserByEmail(email)
 
   if (!user) {
-    throw ApiError.BadRequest('Wrong email or password.');
+    throw ApiError.BadRequest('Wrong email or password.')
   }
 
-  const isPassValid = await bcrypt.compare(password, user.password);
+  const isPassValid = await bcrypt.compare(password, user.password)
 
   if (!isPassValid) {
-    throw ApiError.BadRequest('Wrong email or password.');
+    throw ApiError.BadRequest('Wrong email or password.')
   }
 
-  const userDto = new UserDto(user);
+  const userDto = new UserDto(user)
 
-  const tokens = TokenService.generateTokens({ ...userDto });
-  await TokenService.saveToken(userDto.id, tokens.refreshToken);
+  const tokens = TokenService.generateTokens({ ...userDto })
+  await TokenService.saveToken(userDto.id, tokens.refreshToken)
 
-  return { ...tokens, user: userDto };
-};
+  return { ...tokens, user: userDto }
+}
 
 export const logout = async (refreshToken: string) => {
-  const token = await TokensDB.deleteToken(refreshToken);
-  return token;
-};
+  const token = await TokensDB.deleteToken(refreshToken)
+  return token
+}
 
 export const refresh = async (refreshToken: string) => {
   if (!refreshToken) {
-    throw ApiError.UnauthorizedError();
+    throw ApiError.UnauthorizedError()
   }
 
-  const userData = TokenService.validationRefreshToken(refreshToken);
-  const tokenFromDb = await TokensDB.findToken(refreshToken);
+  const userData = TokenService.validationRefreshToken(refreshToken)
+  const tokenFromDb = await TokensDB.findToken(refreshToken)
 
   if (!userData || !tokenFromDb) {
-    throw ApiError.UnauthorizedError();
+    throw ApiError.UnauthorizedError()
   }
 
-  const user = await UsersDB.getUserByToken(refreshToken);
-  const userDto = new UserDto(user);
+  const user = await UsersDB.getUserByToken(refreshToken)
+  const userDto = new UserDto(user)
 
-  const tokens = TokenService.generateTokens({ ...userDto });
-  await TokenService.saveToken(userDto.id, tokens.refreshToken);
+  const tokens = TokenService.generateTokens({ ...userDto })
+  await TokenService.saveToken(userDto.id, tokens.refreshToken)
 
-  return { ...tokens, user: userDto };
-};
+  return { ...tokens, user: userDto }
+}
 
 export const getAllUsers = async () => {
-  const users = await UsersDB.getAllUsers();
-  return users;
-};
+  const users = await UsersDB.getAllUsers()
+  return users
+}

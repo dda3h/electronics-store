@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import PressButton from '../../../components/PressButton';
+import PressButton from '../../../components/PressButton'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function EmptyCart(): React.ReactElement {
   return (
@@ -14,5 +14,5 @@ export default function EmptyCart(): React.ReactElement {
 
       <PressButton text={'Go home'} link="/" />
     </div>
-  );
+  )
 }

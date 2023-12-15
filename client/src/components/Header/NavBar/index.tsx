@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors';
-import { getIsLogged } from '../../../redux/reducers/user/selectors';
+import { useSelector } from 'react-redux'
+import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors'
+import { getIsLogged } from '../../../redux/reducers/user/selectors'
 
-import HomeSVG from '../../../icons/Home';
-import LoginSVG from '../../../icons/Login';
-import CartSVG from '../../../icons/Cart';
+import HomeSVG from '../../../icons/Home'
+import LoginSVG from '../../../icons/Login'
+import CartSVG from '../../../icons/Cart'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function NavBar(): React.ReactElement {
-  const itemsQuantity = useSelector(getCartItemsQuantity);
+  const itemsQuantity = useSelector(getCartItemsQuantity)
 
-  const isLogged = useSelector(getIsLogged);
+  const isLogged = useSelector(getIsLogged)
 
   return (
     <nav className={styles.wrapper}>
@@ -45,5 +45,5 @@ export default function NavBar(): React.ReactElement {
         </button>
       </Link>
     </nav>
-  );
+  )
 }

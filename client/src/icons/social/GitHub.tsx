@@ -8,6 +8,6 @@ const GitHubSVG = ({ className }: { className?: string }) => (
       />
     </g>
   </svg>
-);
+)
 
-export default GitHubSVG;
+export default GitHubSVG

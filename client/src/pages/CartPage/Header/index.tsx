@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../../redux/reducers/cart/slice';
-import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors';
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart } from '../../../redux/reducers/cart/slice'
+import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors'
 
-import CartSVG from '../../../icons/Cart';
-import TrashSVG from '../../../icons/Trash';
+import CartSVG from '../../../icons/Cart'
+import TrashSVG from '../../../icons/Trash'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function Header(): React.ReactElement {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const itemsQuantity = useSelector(getCartItemsQuantity);
+  const itemsQuantity = useSelector(getCartItemsQuantity)
 
   return (
     <div className={styles.wrapper}>
@@ -30,5 +30,5 @@ export default function Header(): React.ReactElement {
         <h1 className={styles.clear__title}>Clear cart</h1>
       </button>
     </div>
-  );
+  )
 }

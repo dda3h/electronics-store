@@ -1,33 +1,33 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react'
+import { useParams } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../redux/store';
-import { fetchItems } from '../../redux/reducers/items/asyncActions';
-import { addItem } from '../../redux/reducers/cart/slice';
-import { getItemsArray, getItemsStatus } from '../../redux/reducers/items/selectors';
-import { getCartItemList } from '../../redux/reducers/cart/selectors';
-import { Status } from '../../types';
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { fetchItems } from '../../redux/reducers/items/asyncActions'
+import { addItem } from '../../redux/reducers/cart/slice'
+import { getItemsArray, getItemsStatus } from '../../redux/reducers/items/selectors'
+import { getCartItemList } from '../../redux/reducers/cart/selectors'
+import { Status } from '../../types'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function ItemPage(): React.ReactElement {
-  const params = useParams();
-  const dispatch = useAppDispatch();
+  const params = useParams()
+  const dispatch = useAppDispatch()
 
-  const item = useSelector(getItemsArray).find((item) => item.id === Number(params.id));
-  const status = useSelector(getItemsStatus);
+  const item = useSelector(getItemsArray).find((item) => item.id === Number(params.id))
+  const status = useSelector(getItemsStatus)
 
-  const cartItems = useSelector(getCartItemList);
-  const itemCartQuantity = cartItems.find((cartItem) => cartItem.id === item?.id)?.quantity;
+  const cartItems = useSelector(getCartItemList)
+  const itemCartQuantity = cartItems.find((cartItem) => cartItem.id === item?.id)?.quantity
 
   React.useEffect(() => {
-    dispatch(fetchItems());
-  }, []);
+    dispatch(fetchItems())
+  }, [])
 
-  if (status === Status.REJECTED) return <h1 className={styles.statusHeader}>Failed to get the item :(</h1>;
-  if (status === Status.PENDING) return <h1 className={styles.statusHeader}>Loading...</h1>;
-  if (item === undefined) return <h1 className={styles.statusHeader}>There is no item with ID {params.id}</h1>;
+  if (status === Status.REJECTED) return <h1 className={styles.statusHeader}>Failed to get the item :(</h1>
+  if (status === Status.PENDING) return <h1 className={styles.statusHeader}>Loading...</h1>
+  if (item === undefined) return <h1 className={styles.statusHeader}>There is no item with ID {params.id}</h1>
 
   return (
     <>
@@ -68,5 +68,5 @@ export default function ItemPage(): React.ReactElement {
         </div>
       </div>
     </>
-  );
+  )
 }

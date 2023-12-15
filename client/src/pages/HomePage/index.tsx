@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../redux/store';
-import { fetchItems } from '../../redux/reducers/items/asyncActions';
-import { getItemsArray } from '../../redux/reducers/items/selectors';
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../../redux/store'
+import { fetchItems } from '../../redux/reducers/items/asyncActions'
+import { getItemsArray } from '../../redux/reducers/items/selectors'
 
-import Slider from './Slider';
-import Item from './Item';
+import Slider from './Slider'
+import Item from './Item'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function HomePage(): React.ReactElement {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
-  const items = useSelector(getItemsArray);
+  const items = useSelector(getItemsArray)
 
   React.useEffect(() => {
-    dispatch(fetchItems());
-  }, []);
+    dispatch(fetchItems())
+  }, [])
 
   return (
     <div>
@@ -29,5 +29,5 @@ export default function HomePage(): React.ReactElement {
         ))}
       </div>
     </div>
-  );
+  )
 }

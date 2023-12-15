@@ -1,51 +1,51 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import AllFilters from './AllFilters';
+import AllFilters from './AllFilters'
 
-import ListSVG from '../../../../icons/List';
-import SettingsSVG from '../../../../icons/Settings';
+import ListSVG from '../../../../icons/List'
+import SettingsSVG from '../../../../icons/Settings'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  activeFilter: number;
-  setActiveFilter: React.Dispatch<React.SetStateAction<number>>;
-  allFiltersIndex: number;
+  activeFilter: number
+  setActiveFilter: React.Dispatch<React.SetStateAction<number>>
+  allFiltersIndex: number
 }
 
-const sortList = ['By popularity', 'By rating', 'Cheap first', 'Expensive first'];
+const sortList = ['By popularity', 'By rating', 'Cheap first', 'Expensive first']
 
 export default function FiltersMobile({ activeFilter, setActiveFilter, allFiltersIndex }: Props): React.ReactElement {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const categoryCount = searchParams.get('category')?.split(' ').length;
-  const brandCount = searchParams.get('brand')?.split(' ').length;
-  const priceCount = searchParams.get('price') ? 1 : null;
+  const categoryCount = searchParams.get('category')?.split(' ').length
+  const brandCount = searchParams.get('brand')?.split(' ').length
+  const priceCount = searchParams.get('price') ? 1 : null
 
-  const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity';
+  const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity'
 
-  const [isSortOpen, setIsSortOpen] = React.useState<boolean>(false);
+  const [isSortOpen, setIsSortOpen] = React.useState<boolean>(false)
 
   const toggleSortList = () => {
-    setIsSortOpen(!isSortOpen);
-  };
+    setIsSortOpen(!isSortOpen)
+  }
 
   const closeFilters = () => {
-    setActiveFilter(0);
-    setIsSortOpen(false);
-  };
+    setActiveFilter(0)
+    setIsSortOpen(false)
+  }
 
   const changeSort = (index: number) => {
-    closeFilters();
+    closeFilters()
 
-    const selectedSort = sortList[index].replace(/ /g, '_');
+    const selectedSort = sortList[index].replace(/ /g, '_')
 
-    searchParams.set('sort', selectedSort);
-    setSearchParams(searchParams);
-  };
+    searchParams.set('sort', selectedSort)
+    setSearchParams(searchParams)
+  }
 
-  const openFilters = () => setActiveFilter(allFiltersIndex);
+  const openFilters = () => setActiveFilter(allFiltersIndex)
 
   return (
     <>
@@ -62,7 +62,8 @@ export default function FiltersMobile({ activeFilter, setActiveFilter, allFilter
               <button
                 onClick={() => changeSort(index)}
                 className={`${styles.sort} ${sortParam === sort ? styles['sort--active'] : ''}`}
-                key={index}>
+                key={index}
+              >
                 {sort}
               </button>
             ))}
@@ -90,5 +91,5 @@ export default function FiltersMobile({ activeFilter, setActiveFilter, allFilter
         </div>
       </div>
     </>
-  );
+  )
 }

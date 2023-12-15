@@ -1,14 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-import { fetchItems } from './asyncActions';
+import { fetchItems } from './asyncActions'
 
-import { ItemsState } from './types';
-import { Status, TItem } from '../../../types';
+import { ItemsState } from './types'
+import { Status, TItem } from '../../../types'
 
 const initialState: ItemsState = {
   array: [],
-  status: Status.PENDING,
-};
+  status: Status.PENDING
+}
 
 const itemsSlice = createSlice({
   name: 'items',
@@ -17,18 +17,18 @@ const itemsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchItems.pending, (state) => {
-        state.status = Status.PENDING;
-        state.array = [];
+        state.status = Status.PENDING
+        state.array = []
       })
       .addCase(fetchItems.fulfilled, (state, action: { payload: TItem[] }) => {
-        state.status = Status.FULFILLED;
-        state.array = action.payload.sort((a, b) => b.purchaseQuantity - a.purchaseQuantity);
+        state.status = Status.FULFILLED
+        state.array = action.payload.sort((a, b) => b.purchaseQuantity - a.purchaseQuantity)
       })
       .addCase(fetchItems.rejected, (state) => {
-        state.status = Status.REJECTED;
-        state.array = [];
-      });
-  },
-});
+        state.status = Status.REJECTED
+        state.array = []
+      })
+  }
+})
 
-export default itemsSlice.reducer;
+export default itemsSlice.reducer

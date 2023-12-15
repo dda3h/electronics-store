@@ -1,41 +1,41 @@
-import React from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
-import { getCartItemList } from '../redux/reducers/cart/selectors';
+import { useSelector } from 'react-redux'
+import { getCartItemList } from '../redux/reducers/cart/selectors'
 
-import { AuthController } from '../controllers';
+import { AuthController } from '../controllers'
 
-import HomePage from '../pages/HomePage';
-import ItemPage from '../pages/ItemPage';
-import CartPage from '../pages/CartPage';
-import SearchPage from '../pages/SearchPage';
-import SignupPage from '../pages/Auth/SignupPage';
-import LoginPage from '../pages/Auth/LoginPage';
-import AccountPage from '../pages/AccountPage';
-import NotFoundPage from '../pages/NotFoundPage';
+import HomePage from '../pages/HomePage'
+import ItemPage from '../pages/ItemPage'
+import CartPage from '../pages/CartPage'
+import SearchPage from '../pages/SearchPage'
+import SignupPage from '../pages/Auth/SignupPage'
+import LoginPage from '../pages/Auth/LoginPage'
+import AccountPage from '../pages/AccountPage'
+import NotFoundPage from '../pages/NotFoundPage'
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 export default function App(): React.ReactElement {
-  const cartItemList = useSelector(getCartItemList);
+  const cartItemList = useSelector(getCartItemList)
 
-  const location = useLocation();
-  const hideHeaderFooter = ['/signup', '/login'].includes(location.pathname);
+  const location = useLocation()
+  const hideHeaderFooter = ['/signup', '/login'].includes(location.pathname)
 
-  const checkAuth = AuthController.useCheckAuth();
-
-  React.useEffect(() => {
-    const json = JSON.stringify(cartItemList);
-    localStorage.setItem('cart', json);
-  }, [cartItemList]);
+  const checkAuth = AuthController.useCheckAuth()
 
   React.useEffect(() => {
-    if (localStorage.getItem('accessToken')) checkAuth();
-  }, []);
+    const json = JSON.stringify(cartItemList)
+    localStorage.setItem('cart', json)
+  }, [cartItemList])
+
+  React.useEffect(() => {
+    if (localStorage.getItem('accessToken')) checkAuth()
+  }, [])
 
   return (
     <>
@@ -66,5 +66,5 @@ export default function App(): React.ReactElement {
         </div>
       )}
     </>
-  );
+  )
 }

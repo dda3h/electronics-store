@@ -8,6 +8,6 @@ const CheckSVG = () => (
       strokeLinejoin="round"
     />
   </svg>
-);
+)
 
-export default CheckSVG;
+export default CheckSVG

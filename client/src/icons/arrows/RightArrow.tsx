@@ -5,6 +5,6 @@ const RightArrow = ({ className }: { className?: string }) => (
       fill="#0F0F0F"
     />
   </svg>
-);
+)
 
-export default RightArrow;
+export default RightArrow

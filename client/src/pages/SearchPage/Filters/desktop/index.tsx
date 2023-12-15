@@ -1,46 +1,46 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import SortFilter from './Sort';
-import CheckFilter from './CheckFilter';
-import PriceFilter from './Price';
-import AllFilters from './AllFilters';
+import SortFilter from './Sort'
+import CheckFilter from './CheckFilter'
+import PriceFilter from './Price'
+import AllFilters from './AllFilters'
 
-import DownArrow from '../../../../icons/arrows/DownArrow';
-import ArrowsDownUpSVG from '../../../../icons/arrows/ArrowsDownUp';
-import SettingsSVG from '../../../../icons/Settings';
+import DownArrow from '../../../../icons/arrows/DownArrow'
+import ArrowsDownUpSVG from '../../../../icons/arrows/ArrowsDownUp'
+import SettingsSVG from '../../../../icons/Settings'
 
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 interface Props {
-  activeFilter: number;
-  setActiveFilter: React.Dispatch<React.SetStateAction<number>>;
-  allFiltersIndex: number;
+  activeFilter: number
+  setActiveFilter: React.Dispatch<React.SetStateAction<number>>
+  allFiltersIndex: number
 }
 
 export default function FiltersDesktop({ activeFilter, setActiveFilter, allFiltersIndex }: Props): React.ReactElement {
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams()
 
-  const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity';
+  const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity'
 
-  const categoryCount = searchParams.get('category')?.split(' ').length;
-  const brandCount = searchParams.get('brand')?.split(' ').length;
-  const priceCount = searchParams.get('price') ? 1 : null;
+  const categoryCount = searchParams.get('category')?.split(' ').length
+  const brandCount = searchParams.get('brand')?.split(' ').length
+  const priceCount = searchParams.get('price') ? 1 : null
 
   const closeFilter = () => {
-    setActiveFilter(0);
-  };
+    setActiveFilter(0)
+  }
 
   const changeFilter = (index: number) => {
-    setActiveFilter(index === activeFilter ? 0 : index);
-  };
+    setActiveFilter(index === activeFilter ? 0 : index)
+  }
 
   const filters = [
     { icon: <ArrowsDownUpSVG className={styles.button__icon} />, name: sortParam, html: <SortFilter closeFilter={closeFilter} /> },
-    { name: 'Category', html: <CheckFilter param='category' list={1} closeFilter={closeFilter} />, count: categoryCount },
-    { name: 'Brand', html: <CheckFilter param='brand' list={2} closeFilter={closeFilter} />, count: brandCount },
-    { name: 'Price, $', html: <PriceFilter closeFilter={closeFilter} />, count: priceCount },
-  ];
+    { name: 'Category', html: <CheckFilter param="category" list={1} closeFilter={closeFilter} />, count: categoryCount },
+    { name: 'Brand', html: <CheckFilter param="brand" list={2} closeFilter={closeFilter} />, count: brandCount },
+    { name: 'Price, $', html: <PriceFilter closeFilter={closeFilter} />, count: priceCount }
+  ]
 
   return (
     <div className={styles.wrapper}>
@@ -48,7 +48,8 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
         <div className={styles.filterBlock} key={index}>
           <button
             onClick={() => changeFilter(index + 1)}
-            className={activeFilter === index + 1 ? `${styles.button} ${styles['button--active']}` : styles.button}>
+            className={activeFilter === index + 1 ? `${styles.button} ${styles['button--active']}` : styles.button}
+          >
             {filter.icon}
             {filter.name}
             <DownArrow className={styles.button__arrow} />
@@ -84,5 +85,5 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
         {activeFilter === allFiltersIndex && <div onClick={closeFilter} className={styles.allFilters__overlay} />}
       </div>
     </div>
-  );
+  )
 }
