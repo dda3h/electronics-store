@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { getCartItems } from '../redux/reducers/cart/selectors';
+import { getCartItemList } from '../redux/reducers/cart/selectors';
 
 import { AuthController } from '../controllers';
 
@@ -21,7 +21,7 @@ import Footer from '../components/Footer';
 import styles from './styles.module.scss';
 
 export default function App(): React.ReactElement {
-  const items = useSelector(getCartItems);
+  const cartItemList = useSelector(getCartItemList);
 
   const location = useLocation();
   const hideHeaderFooter = ['/signup', '/login'].includes(location.pathname);
@@ -29,9 +29,9 @@ export default function App(): React.ReactElement {
   const checkAuth = AuthController.useCheckAuth();
 
   React.useEffect(() => {
-    const json = JSON.stringify(items);
+    const json = JSON.stringify(cartItemList);
     localStorage.setItem('cart', json);
-  }, [items]);
+  }, [cartItemList]);
 
   React.useEffect(() => {
     if (localStorage.getItem('accessToken')) checkAuth();

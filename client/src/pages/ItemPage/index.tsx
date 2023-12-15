@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../redux/store';
 import { fetchItems } from '../../redux/reducers/items/asyncActions';
 import { addItem } from '../../redux/reducers/cart/slice';
 import { getItemsArray, getItemsStatus } from '../../redux/reducers/items/selectors';
-import { getCartItems } from '../../redux/reducers/cart/selectors';
+import { getCartItemList } from '../../redux/reducers/cart/selectors';
 import { Status } from '../../types';
 
 import styles from './styles.module.scss';
@@ -18,7 +18,7 @@ export default function ItemPage(): React.ReactElement {
   const item = useSelector(getItemsArray).find((item) => item.id === Number(params.id));
   const status = useSelector(getItemsStatus);
 
-  const cartItems = useSelector(getCartItems);
+  const cartItems = useSelector(getCartItemList);
   const itemCartQuantity = cartItems.find((cartItem) => cartItem.id === item?.id)?.quantity;
 
   React.useEffect(() => {

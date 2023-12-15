@@ -1,7 +1,4 @@
-import { TItem } from '../../../types';
-
 export interface CartState {
-  items: (TItem & { quantity: number })[];
-  totalPrice: number;
+  itemList: { id: number; quantity: number }[];
   itemsQuantity: number;
 }

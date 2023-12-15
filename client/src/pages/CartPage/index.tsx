@@ -1,4 +1,5 @@
 import React from 'react';
+import { $api } from '../../axios';
 
 import { useSelector } from 'react-redux';
 import { getCartState } from '../../redux/reducers/cart/selectors';
@@ -7,19 +8,43 @@ import EmptyCart from './EmptyCart';
 import Header from './Header';
 import Item from './Item';
 
+import { TItem } from '../../types';
+
 import styles from './styles.module.scss';
 
 export default function CartPage(): React.ReactElement {
-  const { items, totalPrice, itemsQuantity } = useSelector(getCartState);
+  const { itemList, itemsQuantity } = useSelector(getCartState);
 
-  if (!items.length) return <EmptyCart />;
+  const [itemsData, setItemsData] = React.useState<(TItem & { quantity: number })[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const totalPrice = itemsData.reduce((sum: number, item: TItem) => sum + item.price * (item.quantity || 0), 0);
+
+  React.useEffect(() => {
+    const fetchCartItems = async () => {
+      const promises = itemList.map(async (item) => {
+        const response = await $api.get(`http://localhost:5000/items/${item.id}`);
+        return { ...response.data, quantity: item.quantity };
+      });
+
+      const resolvedData = await Promise.all(promises);
+
+      setItemsData(resolvedData);
+      setIsLoading(false);
+    };
+
+    fetchCartItems();
+  }, [itemList]);
+
+  if (isLoading) return <h1 className={styles.statusHeader}>Loading...</h1>;
+  if (!itemsData.length) return <EmptyCart />;
 
   return (
     <div className={styles.wrapper}>
       <Header />
 
       <div className={styles.items}>
-        {items.map((item, index) => (
+        {itemsData.map((item, index) => (
           <Item {...item} key={index} />
         ))}
       </div>

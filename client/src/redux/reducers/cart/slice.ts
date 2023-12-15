@@ -5,8 +5,7 @@ import getCartFromLocalStorage from './getCartFromLocalStorage';
 import { CartState } from './types';
 
 const initialState: CartState = {
-  items: getCartFromLocalStorage().items,
-  totalPrice: getCartFromLocalStorage().totalPrice,
+  itemList: getCartFromLocalStorage().itemList,
   itemsQuantity: getCartFromLocalStorage().itemsQuantity,
 };
 
@@ -15,35 +14,27 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const itemInCart = state.items.find((item) => item.id === action.payload.id);
+      const itemInCart = state.itemList.find((item) => item.id === action.payload.id);
 
       if (itemInCart) itemInCart.quantity++;
-      else state.items.unshift({ ...action.payload, quantity: 1 });
+      else state.itemList.unshift({ id: action.payload.id, quantity: 1 });
 
-      state.totalPrice += action.payload.price;
       state.itemsQuantity += 1;
     },
 
     subItem: (state, action) => {
-      const itemInCart = state.items.find((item) => item.id === action.payload.id);
-
-      if (itemInCart) itemInCart.quantity--;
-
-      state.totalPrice -= action.payload.price;
+      // @ts-ignore
+      state.itemList.find((item) => item.id === action.payload.id).quantity -= 1;
       state.itemsQuantity -= 1;
     },
 
     removeItem: (state, action) => {
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
-
-      state.totalPrice -= action.payload.price * action.payload.quantity;
+      state.itemList = state.itemList.filter((item) => item.id !== action.payload.id);
       state.itemsQuantity -= action.payload.quantity;
     },
 
     clearCart: (state) => {
-      state.items = [];
-
-      state.totalPrice = 0;
+      state.itemList = [];
       state.itemsQuantity = 0;
     },
   },
