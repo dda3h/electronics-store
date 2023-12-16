@@ -7,15 +7,15 @@ import NavBar from './NavBar'
 import styles from './styles.module.scss'
 
 export default function Header(): React.ReactElement {
-  return (
-    <header className={styles.wrapper}>
-      <button className={styles.logo}>
-        <Link to="/">BestLogoEver</Link>
-      </button>
+	return (
+		<header className={styles.wrapper}>
+			<button className={styles.logo}>
+				<Link to="/">BestLogoEver</Link>
+			</button>
 
-      <Search />
+			<Search />
 
-      <NavBar />
-    </header>
-  )
+			<NavBar />
+		</header>
+	)
 }

@@ -1,54 +1,54 @@
 .wrapper {
-  width: 100%;
-  border-radius: 24px;
-  font-weight: 300;
-  transition: transform 0.2s ease-out;
-  display: flex;
-  column-gap: 0.5rem;
+	width: 100%;
+	border-radius: 24px;
+	font-weight: 300;
+	transition: transform 0.2s ease-out;
+	display: flex;
+	column-gap: 0.5rem;
 }
 
 .image {
-  width: 9rem;
-  min-width: 9rem;
-  height: 9rem;
-  border-radius: 24px;
+	width: 9rem;
+	min-width: 9rem;
+	height: 9rem;
+	border-radius: 24px;
 
-  @media (max-width: 992px) {
-    width: 6rem;
-    min-width: 6rem;
-    height: 6rem;
-    border-radius: 12px;
-  }
+	@media (max-width: 992px) {
+		width: 6rem;
+		min-width: 6rem;
+		height: 6rem;
+		border-radius: 12px;
+	}
 }
 
 .title {
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
 }
 
 .description {
-  color: #646464;
+	color: #646464;
 }
 
 .rating {
-  margin: 0.3rem 0;
-  font-size: 0.8rem;
+	margin: 0.3rem 0;
+	font-size: 0.8rem;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
 
-  &__quantity {
-    color: #646464;
-  }
+	&__quantity {
+		color: #646464;
+	}
 }
 
 .price {
-  font-size: 1.2rem;
-  font-weight: 500;
+	font-size: 1.2rem;
+	font-weight: 500;
 }

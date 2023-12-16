@@ -1,69 +1,69 @@
 .wrapper {
-  display: grid;
-  justify-content: center;
-  margin: 2rem 1rem;
-  row-gap: 2rem;
+	display: grid;
+	justify-content: center;
+	margin: 2rem 1rem;
+	row-gap: 2rem;
 }
 
 .welcome {
-  font-size: 1.4rem;
-  text-align: center;
+	font-size: 1.4rem;
+	text-align: center;
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  padding: 1rem;
-  row-gap: 1rem;
-  font-size: 0.8rem;
+	padding: 1rem;
+	row-gap: 1rem;
+	font-size: 0.8rem;
 
-  border: 1px solid #ddd;
-  border-radius: 6px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
 
-  &__block {
-    display: flex;
-    justify-content: space-between;
-    column-gap: 5rem;
-  }
+	&__block {
+		display: flex;
+		justify-content: space-between;
+		column-gap: 5rem;
+	}
 
-  &__key {
-    font-weight: 700;
-  }
+	&__key {
+		font-weight: 700;
+	}
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 1rem;
+	display: flex;
+	justify-content: space-between;
+	column-gap: 1rem;
 }
 
 .changeButton {
-  width: min-content;
-  height: min-content;
-  padding: 4px 20px;
-  font-size: 0.8rem;
+	width: min-content;
+	height: min-content;
+	padding: 4px 20px;
+	font-size: 0.8rem;
 
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: 0.2s background-color ease-out;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	transition: 0.2s background-color ease-out;
 
-  &:hover {
-    background-color: #ddd;
-  }
+	&:hover {
+		background-color: #ddd;
+	}
 }
 
 .logoutButton {
-  width: min-content;
-  padding: 4px 20px;
-  font-size: 0.8rem;
+	width: min-content;
+	padding: 4px 20px;
+	font-size: 0.8rem;
 
-  white-space: nowrap;
-  border-radius: 4px;
-  background-color: #ddd;
-  transition: 0.2s background-color ease-out;
+	white-space: nowrap;
+	border-radius: 4px;
+	background-color: #ddd;
+	transition: 0.2s background-color ease-out;
 
-  &:hover {
-    background-color: #aaa;
-  }
+	&:hover {
+		background-color: #aaa;
+	}
 }

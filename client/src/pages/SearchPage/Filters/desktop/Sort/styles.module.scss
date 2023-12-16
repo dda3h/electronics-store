@@ -1,50 +1,50 @@
 .wrapper {
-  display: grid;
-  row-gap: 0.5rem;
+	display: grid;
+	row-gap: 0.5rem;
 
-  font-weight: 300;
+	font-weight: 300;
 }
 
 .button {
-  display: flex;
-  align-items: center;
-  column-gap: 0.3rem;
-  font-size: 0.8rem;
+	display: flex;
+	align-items: center;
+	column-gap: 0.3rem;
+	font-size: 0.8rem;
 
-  &:hover {
-    .button__outerCircle {
-      border-color: #777;
-    }
-  }
+	&:hover {
+		.button__outerCircle {
+			border-color: #777;
+		}
+	}
 
-  &__active {
-    .button__outerCircle {
-      border: 2px solid #000 !important;
-    }
+	&__active {
+		.button__outerCircle {
+			border: 2px solid #000 !important;
+		}
 
-    .button__innerCircle {
-      background-color: #222;
-    }
-  }
+		.button__innerCircle {
+			background-color: #222;
+		}
+	}
 
-  &__outerCircle {
-    display: flex;
+	&__outerCircle {
+		display: flex;
 
-    width: 1rem;
-    height: 1rem;
+		width: 1rem;
+		height: 1rem;
 
-    border: 1px solid #bbb;
-    border-radius: 50%;
+		border: 1px solid #bbb;
+		border-radius: 50%;
 
-    justify-content: center;
-    align-items: center;
+		justify-content: center;
+		align-items: center;
 
-    transition: border-color 0.1s ease-out;
-  }
+		transition: border-color 0.1s ease-out;
+	}
 
-  &__innerCircle {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-  }
+	&__innerCircle {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+	}
 }

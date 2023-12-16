@@ -1,62 +1,62 @@
 .wrapper {
-  position: relative;
-  padding: 0.5rem 0;
+	position: relative;
+	padding: 0.5rem 0;
 
-  height: 24rem;
-  overflow: hidden;
+	height: 24rem;
+	overflow: hidden;
 
-  background-color: #bdc4ca;
+	background-color: #bdc4ca;
 
-  @media (max-width: 575px) {
-    height: 12rem;
-  }
+	@media (max-width: 575px) {
+		height: 12rem;
+	}
 }
 
 .images {
-  display: flex;
-  height: 100%;
-  transition: transform 0.3s ease-out;
+	display: flex;
+	height: 100%;
+	transition: transform 0.3s ease-out;
 }
 
 .image {
-  min-width: 100%;
-  height: 100%;
+	min-width: 100%;
+	height: 100%;
 }
 
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 1rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0 1rem;
 
-  width: 3rem;
+	width: 3rem;
 
-  z-index: 1;
+	z-index: 1;
 
-  &:hover {
-    .arrow__icon {
-      transform: scale(0.9);
-    }
-  }
+	&:hover {
+		.arrow__icon {
+			transform: scale(0.9);
+		}
+	}
 
-  &__icon {
-    height: 3rem;
-    border-radius: 50%;
-    background-color: #adb5bd80;
-    transition: transform 0.2s ease-out;
-  }
+	&__icon {
+		height: 3rem;
+		border-radius: 50%;
+		background-color: #adb5bd80;
+		transition: transform 0.2s ease-out;
+	}
 }
 
 .imageDim {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: background-color 0.3s ease-out, opacity 0.3s ease-out;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transition: background-color 0.3s ease-out, opacity 0.3s ease-out;
 
-  // &:hover {
-  //   background-color: #242424;
-  //   opacity: 0.3;
-  // }
+	// &:hover {
+	//   background-color: #242424;
+	//   opacity: 0.3;
+	// }
 }

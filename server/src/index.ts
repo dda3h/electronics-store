@@ -22,5 +22,5 @@ app.use('/auth', authRouter)
 app.use(errorMiddleware)
 
 app.listen(PORT, () => {
-  console.log(`Server has started on port ${PORT}...`)
+	console.log(`Server has started on port ${PORT}...`)
 })

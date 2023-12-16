@@ -11,23 +11,23 @@ import Item from './Item'
 import styles from './styles.module.scss'
 
 export default function HomePage(): React.ReactElement {
-  const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch()
 
-  const items = useSelector(getItemsArray)
+	const items = useSelector(getItemsArray)
 
-  React.useEffect(() => {
-    dispatch(fetchItems())
-  }, [])
+	React.useEffect(() => {
+		dispatch(fetchItems())
+	}, [])
 
-  return (
-    <div>
-      <Slider />
+	return (
+		<div>
+			<Slider />
 
-      <div className={styles.items}>
-        {items.map((item, index) => (
-          <Item {...item} key={index} />
-        ))}
-      </div>
-    </div>
-  )
+			<div className={styles.items}>
+				{items.map((item, index) => (
+					<Item {...item} key={index} />
+				))}
+			</div>
+		</div>
+	)
 }

@@ -6,11 +6,11 @@ import cartSlice from './reducers/cart/slice'
 import userSlice from './reducers/user/slice'
 
 const store = configureStore({
-  reducer: {
-    items: itemsSlice,
-    cart: cartSlice,
-    user: userSlice
-  }
+	reducer: {
+		items: itemsSlice,
+		cart: cartSlice,
+		user: userSlice
+	}
 })
 
 export const useAppDispatch = () => useDispatch<typeof store.dispatch>()

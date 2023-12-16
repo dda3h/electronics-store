@@ -1,17 +1,17 @@
 .button {
-  text-align: center;
+	text-align: center;
 
-  padding: 0.5rem 1rem;
-  width: 100%;
+	padding: 0.5rem 1rem;
+	width: 100%;
 
-  border-radius: 12px;
-  box-shadow: 0 5px 0 #aaa;
-  background-color: #ddd;
-  color: #222;
-  transition: all 0.1s ease-out;
+	border-radius: 12px;
+	box-shadow: 0 5px 0 #aaa;
+	background-color: #ddd;
+	color: #222;
+	transition: all 0.1s ease-out;
 
-  &:active {
-    box-shadow: 0 0 0 #aaa;
-    transform: translateY(5px);
-  }
+	&:active {
+		box-shadow: 0 0 0 #aaa;
+		transform: translateY(5px);
+	}
 }

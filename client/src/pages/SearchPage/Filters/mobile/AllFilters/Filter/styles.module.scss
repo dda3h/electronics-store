@@ -1,27 +1,27 @@
 .wrapper {
-  display: flex;
-  column-gap: 0.5rem;
+	display: flex;
+	column-gap: 0.5rem;
 
-  overflow-x: auto;
-  scrollbar-width: none;
+	overflow-x: auto;
+	scrollbar-width: none;
 }
 
 .button {
-  display: flex;
-  column-gap: 0.3rem;
+	display: flex;
+	column-gap: 0.3rem;
 
-  border: 1px solid #808080;
-  border-radius: 48px;
+	border: 1px solid #808080;
+	border-radius: 48px;
 
-  padding: 0.4rem 0.5rem;
+	padding: 0.4rem 0.5rem;
 
-  font-size: 0.9rem;
-  font-weight: 300;
+	font-size: 0.9rem;
+	font-weight: 300;
 
-  white-space: nowrap;
+	white-space: nowrap;
 
-  &__active {
-    background-color: #f1f1f5;
-    border-color: #f1f1f5;
-  }
+	&__active {
+		background-color: #f1f1f5;
+		border-color: #f1f1f5;
+	}
 }

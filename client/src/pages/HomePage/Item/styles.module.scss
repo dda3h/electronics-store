@@ -1,49 +1,49 @@
 .wrapper {
-  width: 100%;
-  border-radius: 24px;
-  font-weight: 300;
-  transition: transform 0.2s ease-out;
-  user-select: auto;
+	width: 100%;
+	border-radius: 24px;
+	font-weight: 300;
+	transition: transform 0.2s ease-out;
+	user-select: auto;
 
-  &__text {
-    margin: 0.2rem 0;
-  }
+	&__text {
+		margin: 0.2rem 0;
+	}
 }
 
 .image {
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 24px;
+	width: 100%;
+	aspect-ratio: 1/1;
+	border-radius: 24px;
 }
 
 .title {
-  font-size: 0.9rem;
+	font-size: 0.9rem;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
 }
 
 .description {
-  color: #646464;
+	color: #646464;
 }
 
 .rating {
-  margin: 0.3rem 0;
-  font-size: 0.7rem;
+	margin: 0.3rem 0;
+	font-size: 0.7rem;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
 
-  &__quantity {
-    color: #646464;
-  }
+	&__quantity {
+		color: #646464;
+	}
 }
 
 .price {
-  font-size: 1rem;
-  font-weight: 500;
+	font-size: 1rem;
+	font-weight: 500;
 }

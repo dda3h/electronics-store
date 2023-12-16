@@ -1,33 +1,33 @@
 .wrapper {
-  display: flex;
-  column-gap: 0.3rem;
-  font-size: 0.8rem;
+	display: flex;
+	column-gap: 0.3rem;
+	font-size: 0.8rem;
 }
 
 .inputWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  row-gap: 0.4rem;
-  font-weight: 300;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	row-gap: 0.4rem;
+	font-weight: 300;
 }
 
 .input {
-  font-size: 0.9rem;
-  width: 100%;
-  padding: 8px 9px;
+	font-size: 0.9rem;
+	width: 100%;
+	padding: 8px 9px;
 
-  border: 1px solid #f1f1f5;
-  border-radius: 8px;
-  background-color: #f1f1f5;
-  transition: all 0.2s ease-out;
+	border: 1px solid #f1f1f5;
+	border-radius: 8px;
+	background-color: #f1f1f5;
+	transition: all 0.2s ease-out;
 
-  &:focus {
-    border: 1px solid #646464;
-  }
+	&:focus {
+		border: 1px solid #646464;
+	}
 
-  &:hover:not(:focus) {
-    border: 1px solid #e8e8f0;
-    background-color: #e8e8f0;
-  }
+	&:hover:not(:focus) {
+		border: 1px solid #e8e8f0;
+		background-color: #e8e8f0;
+	}
 }

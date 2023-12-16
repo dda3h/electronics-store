@@ -10,25 +10,25 @@ import useFilteredData from './useFilteredData'
 import styles from './styles.module.scss'
 
 export default function Items(): React.ReactElement {
-  const data = useFilteredData()
-  const [searchParams] = useSearchParams()
+	const data = useFilteredData()
+	const [searchParams] = useSearchParams()
 
-  const itemsPerPage = 5
-  const pageCount = Math.ceil(data.length / itemsPerPage)
-  const currentPage = Number(searchParams.get('page')) || 1
-  const lastIndex = currentPage * itemsPerPage
-  const firstIndex = lastIndex - itemsPerPage
-  const items = data.slice(firstIndex, lastIndex)
+	const itemsPerPage = 5
+	const pageCount = Math.ceil(data.length / itemsPerPage)
+	const currentPage = Number(searchParams.get('page')) || 1
+	const lastIndex = currentPage * itemsPerPage
+	const firstIndex = lastIndex - itemsPerPage
+	const items = data.slice(firstIndex, lastIndex)
 
-  if (!data.length) return <NotFound />
+	if (!data.length) return <NotFound />
 
-  return (
-    <div className={styles.wrapper}>
-      {items.map((item, index) => (
-        <Item {...item} key={index} />
-      ))}
+	return (
+		<div className={styles.wrapper}>
+			{items.map((item, index) => (
+				<Item {...item} key={index} />
+			))}
 
-      {pageCount > 1 && <Pagination pageCount={pageCount} />}
-    </div>
-  )
+			{pageCount > 1 && <Pagination pageCount={pageCount} />}
+		</div>
+	)
 }

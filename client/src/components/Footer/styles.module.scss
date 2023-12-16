@@ -1,37 +1,37 @@
 .wrapper {
-  padding: 0.5rem;
-  text-align: center;
-  background-color: #dee2e6;
-  color: #222;
+	padding: 0.5rem;
+	text-align: center;
+	background-color: #dee2e6;
+	color: #222;
 
-  @media (max-width: 1023px) {
-    padding-bottom: 61px;
-  }
+	@media (max-width: 1023px) {
+		padding-bottom: 61px;
+	}
 }
 
 .header {
-  font-size: 1.2rem;
-  font-weight: 700;
+	font-size: 1.2rem;
+	font-weight: 700;
 }
 
 .socialNetworks {
-  display: flex;
-  justify-content: center;
-  margin: 0.4rem;
-  gap: 0.7rem;
+	display: flex;
+	justify-content: center;
+	margin: 0.4rem;
+	gap: 0.7rem;
 
-  &__icon {
-    width: 2rem;
-    border-radius: 8px;
-    transition: transform 0.2s ease-out;
+	&__icon {
+		width: 2rem;
+		border-radius: 8px;
+		transition: transform 0.2s ease-out;
 
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
 }
 
 .text {
-  font-size: 0.8rem;
-  margin-bottom: 0.5rem;
+	font-size: 0.8rem;
+	margin-bottom: 0.5rem;
 }

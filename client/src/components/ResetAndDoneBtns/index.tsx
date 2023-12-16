@@ -3,24 +3,24 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 interface Props {
-  condition?: boolean
-  firstButtonName?: string
-  resetFunc?: () => void
-  doneFunc?: () => void
+	condition?: boolean
+	firstButtonName?: string
+	resetFunc?: () => void
+	doneFunc?: () => void
 }
 
 export default function ResetAndDoneBtns(props: Props): React.ReactElement {
-  return (
-    <div className={styles.wrapper}>
-      {props.condition && (
-        <button onClick={props.resetFunc} className={styles.button}>
-          {props.firstButtonName ?? 'Reset'}
-        </button>
-      )}
+	return (
+		<div className={styles.wrapper}>
+			{props.condition && (
+				<button onClick={props.resetFunc} className={styles.button}>
+					{props.firstButtonName ?? 'Reset'}
+				</button>
+			)}
 
-      <button onClick={props.doneFunc} className={styles.button}>
-        Done
-      </button>
-    </div>
-  )
+			<button onClick={props.doneFunc} className={styles.button}>
+				Done
+			</button>
+		</div>
+	)
 }
