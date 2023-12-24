@@ -7,6 +7,10 @@ import { fetchItems } from '../../redux/reducers/items/asyncActions'
 import { addItem } from '../../redux/reducers/cart/slice'
 import { getItemsArray, getItemsStatus } from '../../redux/reducers/items/selectors'
 import { getCartItemList } from '../../redux/reducers/cart/selectors'
+import { getIsLogged, getUser } from '../../redux/reducers/user/selectors'
+
+import { CartService } from '../../services'
+
 import { Status } from '../../types'
 
 import styles from './styles.module.scss'
@@ -19,22 +23,38 @@ export default function ItemPage(): React.ReactElement {
 	const status = useSelector(getItemsStatus)
 
 	const cartItems = useSelector(getCartItemList)
-	const itemCartQuantity = cartItems.find(
-		cartItem => cartItem.id === item?.id
-	)?.quantity
+	const itemCartQuantity = cartItems.find(cartItem => cartItem.id === item?.id)?.quantity
+
+	const { id: userId } = useSelector(getUser)
+	const isLogged = useSelector(getIsLogged)
+
+	async function onClickAdd() {
+		dispatch(addItem(item))
+
+		if (isLogged) {
+			const dbCart = await CartService.getCart(userId)
+
+			if (dbCart.find(dbItem => dbItem.id === item?.id)) {
+				return CartService.incrementItem(userId, item!.id)
+			}
+
+			CartService.addItem(userId, item!.id, 1)
+		}
+	}
 
 	React.useEffect(() => {
 		dispatch(fetchItems())
 	}, [])
 
-	if (status === Status.REJECTED)
-		return <h1 className={styles.statusHeader}>Failed to get the item :(</h1>
-	if (status === Status.PENDING)
-		return <h1 className={styles.statusHeader}>Loading...</h1>
-	if (item === undefined)
-		return (
-			<h1 className={styles.statusHeader}>There is no item with ID {params.id}</h1>
-		)
+	if (status === Status.REJECTED) return (
+		<h1 className={styles.statusHeader}>Failed to get the item :(</h1>
+	)
+	if (status === Status.PENDING) return (
+		<h1 className={styles.statusHeader}>Loading...</h1>
+	)
+	if (item === undefined) return (
+		<h1 className={styles.statusHeader}>There is no item with ID {params.id}</h1>
+	)
 
 	return (
 		<>
@@ -65,7 +85,7 @@ export default function ItemPage(): React.ReactElement {
 
 					<div className={`${styles.buttons} ${styles.block__section}`}>
 						<button
-							onClick={() => dispatch(addItem(item))}
+							onClick={onClickAdd}
 							className={`${styles.button} ${styles['button--cart']}`}
 						>
 							Add to cart

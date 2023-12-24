@@ -5,7 +5,8 @@ import { IUser } from '../../../models/IUser'
 
 const initialState: UserState = {
 	user: {} as IUser,
-	isLogged: false
+	isLogged: false,
+	isRefreshed: false
 }
 
 const userSlice = createSlice({
@@ -18,10 +19,14 @@ const userSlice = createSlice({
 
 		setIsLogged: (state, action: { payload: boolean }) => {
 			state.isLogged = action.payload
+		},
+
+		setIsRefreshed: (state, action: { payload: boolean }) => {
+			state.isRefreshed = action.payload
 		}
 	}
 })
 
-export const { setUser, setIsLogged } = userSlice.actions
+export const { setUser, setIsLogged, setIsRefreshed } = userSlice.actions
 
 export default userSlice.reducer

@@ -5,7 +5,7 @@ import { AuthService } from '../services/index.js'
 
 import { ApiError } from '../exceptions/api-error.js'
 
-export const registration = async (req: Request, res: Response, next: NextFunction) => {
+export async function registration(req: Request, res: Response, next: NextFunction) {
 	try {
 		const errors = validationResult(req)
 		if (!errors.isEmpty()) {
@@ -21,23 +21,22 @@ export const registration = async (req: Request, res: Response, next: NextFuncti
 		})
 
 		return res.json(userData)
-	} catch (error) {
-		next(error)
+	} catch (err) {
+		next(err)
 	}
 }
 
-export const verify = async (req: Request, res: Response, next: NextFunction) => {
+export async function verify(req: Request, res: Response, next: NextFunction) {
 	try {
 		const verificationLink = req.params.link
 		await AuthService.verify(verificationLink)
-		// @ts-ignore
-		return res.redirect(process.env.CLIENT_URL)
-	} catch (error) {
-		next(error)
+		return res.redirect(process.env.CLIENT_URL!)
+	} catch (err) {
+		next(err)
 	}
 }
 
-export const login = async (req: Request, res: Response, next: NextFunction) => {
+export async function login(req: Request, res: Response, next: NextFunction) {
 	try {
 		const { email, password } = req.body
 
@@ -48,12 +47,12 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 		})
 
 		return res.json(userData)
-	} catch (error) {
-		next(error)
+	} catch (err) {
+		next(err)
 	}
 }
 
-export const logout = async (req: Request, res: Response, next: NextFunction) => {
+export async function logout(req: Request, res: Response, next: NextFunction) {
 	try {
 		const { refreshToken } = req.cookies
 
@@ -61,12 +60,12 @@ export const logout = async (req: Request, res: Response, next: NextFunction) =>
 		res.clearCookie('refreshToken')
 
 		return res.json(token)
-	} catch (error) {
-		next(error)
+	} catch (err) {
+		next(err)
 	}
 }
 
-export const refresh = async (req: Request, res: Response, next: NextFunction) => {
+export async function refresh(req: Request, res: Response, next: NextFunction) {
 	try {
 		const { refreshToken } = req.cookies
 
@@ -77,16 +76,7 @@ export const refresh = async (req: Request, res: Response, next: NextFunction) =
 		})
 
 		return res.json(userData)
-	} catch (error) {
-		next(error)
-	}
-}
-
-export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
-	try {
-		const users = await AuthService.getAllUsers()
-		return res.json(users)
-	} catch (error) {
-		next(error)
+	} catch (err) {
+		next(err)
 	}
 }

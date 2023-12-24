@@ -3,9 +3,9 @@ import { useSearchParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getItemsArray } from '../../../redux/reducers/items/selectors'
 
-import { TItem } from '../../../types'
+import { TItems } from '../../../types'
 
-export default function useFilteredData(): TItem[] {
+export default function useFilteredData(): TItems[] {
 	const [searchParams] = useSearchParams()
 
 	const query = searchParams.get('query') || ''

@@ -9,7 +9,7 @@ interface Props {
 export default function useChangeFilter() {
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	const changeFilter = ({ filterList, index, param }: Props) => {
+	function changeFilter({ filterList, index, param }: Props) {
 		const filterParam = searchParams.get(param)
 		const selectedOption = filterList[index].name.replace(/ /g, '_')
 

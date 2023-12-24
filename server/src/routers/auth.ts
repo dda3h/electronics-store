@@ -4,8 +4,6 @@ import { body } from 'express-validator'
 
 import { AuthController } from '../controllers/index.js'
 
-import { authMiddleware } from '../middlewares/authMiddleware.js'
-
 const auth = Router()
 
 auth.post(
@@ -19,6 +17,5 @@ auth.get('/verify/:link', AuthController.verify)
 auth.post('/login', AuthController.login)
 auth.post('/logout', AuthController.logout)
 auth.get('/refresh', AuthController.refresh)
-auth.get('/users', authMiddleware, AuthController.getUsers)
 
 export const authRouter = auth

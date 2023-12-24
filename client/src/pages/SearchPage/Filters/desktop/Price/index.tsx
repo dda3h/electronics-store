@@ -7,7 +7,7 @@ import getPrices from '../../hooks/usePrices'
 
 import styles from './styles.module.scss'
 
-export default function PriceFilter({ closeFilter }: { closeFilter: Function }): React.ReactElement {
+export default function PriceFilter({ closeFilter }: { closeFilter: () => void }): React.ReactElement {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [minPrice, maxPrice] = getPrices()
 
@@ -16,14 +16,14 @@ export default function PriceFilter({ closeFilter }: { closeFilter: Function }):
 	const [inputFrom, setInputFrom] = React.useState<string>(minPrice)
 	const [inputTo, setInputTo] = React.useState<string>(maxPrice)
 
-	const resetPrices = () => {
+	function resetPrices() {
 		setInputFrom(minPrice)
 		setInputTo(maxPrice)
 		searchParams.delete('price')
 		setSearchParams(searchParams)
 	}
 
-	const setPrices = () => {
+	function setPrices()  {
 		closeFilter()
 		searchParams.set('price', `${inputFrom}-${inputTo}`)
 		setSearchParams(searchParams)

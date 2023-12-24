@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 
 import { itemsRouter } from './routers/items.js'
 import { authRouter } from './routers/auth.js'
+import { cartRouter } from './routers/cart.js'
 
 import { errorMiddleware } from './middlewares/errorMiddleware.js'
 
@@ -18,6 +19,7 @@ app.use('/images', express.static('./images'))
 
 app.use('/items', itemsRouter)
 app.use('/auth', authRouter)
+app.use('/cart', cartRouter)
 
 app.use(errorMiddleware)
 

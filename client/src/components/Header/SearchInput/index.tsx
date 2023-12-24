@@ -17,12 +17,12 @@ export default function Search(): React.ReactElement {
 
 	const query = searchParams.get('query') || ''
 
-	const clearInput = () => {
+	function clearInput() {
 		setInputValue('')
 		searchInputRef.current?.focus()
 	}
 
-	const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+	function handleSearch(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (!inputValue?.trim()) return navigate('/')
 
 		event.currentTarget.blur()

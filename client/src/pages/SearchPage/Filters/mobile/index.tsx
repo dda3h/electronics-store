@@ -31,16 +31,16 @@ export default function FiltersMobile({
 
 	const [isSortOpen, setIsSortOpen] = React.useState<boolean>(false)
 
-	const toggleSortList = () => {
+	function toggleSortList() {
 		setIsSortOpen(!isSortOpen)
 	}
 
-	const closeFilters = () => {
+	function closeFilters() {
 		setActiveFilter(0)
 		setIsSortOpen(false)
 	}
 
-	const changeSort = (index: number) => {
+	function changeSort(index: number) {
 		closeFilters()
 
 		const selectedSort = sortList[index].replace(/ /g, '_')
@@ -49,7 +49,9 @@ export default function FiltersMobile({
 		setSearchParams(searchParams)
 	}
 
-	const openFilters = () => setActiveFilter(allFiltersIndex)
+	function openFilters() {
+		setActiveFilter(allFiltersIndex)
+	}
 
 	return (
 		<>

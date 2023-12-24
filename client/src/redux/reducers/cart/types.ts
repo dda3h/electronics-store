@@ -1,4 +1,6 @@
+import { TCartList } from '../../../types'
+
 export interface CartState {
-	itemList: { id: number; quantity: number }[]
+	itemList: TCartList
 	itemsQuantity: number
 }

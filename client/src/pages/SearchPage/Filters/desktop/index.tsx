@@ -27,11 +27,11 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 	const brandCount = searchParams.get('brand')?.split(' ').length
 	const priceCount = searchParams.get('price') ? 1 : null
 
-	const closeFilter = () => {
+	function closeFilter() {
 		setActiveFilter(0)
 	}
 
-	const changeFilter = (index: number) => {
+	function changeFilter(index: number) {
 		setActiveFilter(index === activeFilter ? 0 : index)
 	}
 

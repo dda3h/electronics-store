@@ -10,7 +10,7 @@
 
 # About
 
-Electronics Store is my pet project. My inspiration for it was a few popular online stores. The project features the ability to add items to the cart, an account system<!-- for saving the cart -->, search for items with filters, and more.
+Electronics Store is my pet project. My inspiration for it was a few popular online stores. The project features the ability to add items to the cart, an account system for saving the cart, search for items with filters, and more.
 
 # How to run it locally
 

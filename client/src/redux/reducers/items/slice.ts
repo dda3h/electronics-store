@@ -22,9 +22,7 @@ const itemsSlice = createSlice({
 			})
 			.addCase(fetchItems.fulfilled, (state, action: { payload: TItem[] }) => {
 				state.status = Status.FULFILLED
-				state.array = action.payload.sort(
-					(a, b) => b.purchaseQuantity - a.purchaseQuantity
-				)
+				state.array = action.payload.sort((a, b) => b.purchaseQuantity - a.purchaseQuantity)
 			})
 			.addCase(fetchItems.rejected, state => {
 				state.status = Status.REJECTED

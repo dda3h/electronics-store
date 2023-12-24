@@ -3,6 +3,7 @@ import { IUser } from '../../../models/IUser'
 export interface UserState {
 	user: IUser
 	isLogged: boolean
+	isRefreshed: boolean
 }
 
 export interface ILoginProps {

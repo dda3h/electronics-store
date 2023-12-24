@@ -16,7 +16,7 @@ export default function PriceFilter(): React.ReactElement {
 
 	const [update, setUpdate] = React.useState<boolean>(true)
 
-	const changePrices = async (value: string, type: 'min' | 'max') => {
+	function changePrices(value: string, type: 'min' | 'max') {
 		if (type === 'min') setInputFrom(value)
 		if (type === 'max') setInputTo(value)
 

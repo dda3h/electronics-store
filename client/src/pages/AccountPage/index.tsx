@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getIsLogged, getUser } from '../../redux/reducers/user/selectors'
 
-import { AuthController } from '../../controllers'
+import { AuthService } from '../../services'
 
 import styles from './styles.module.scss'
 
 export default function AccountPage(): React.ReactElement {
 	const navigate = useNavigate()
-	const logout = AuthController.useLogout()
 
 	const user = useSelector(getUser)
 	const isLogged = useSelector(getIsLogged)
+
+	const logout = AuthService.useLogout()
 
 	React.useEffect(() => {
 		if (!isLogged) navigate('/login')

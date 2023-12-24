@@ -1,16 +1,116 @@
 import { $api } from '../axios'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
-import { AxiosResponse } from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearCart, updateItemList } from '../redux/reducers/cart/slice'
+import { setIsLogged, setIsRefreshed, setUser } from '../redux/reducers/user/slice'
+import { getUser } from '../redux/reducers/user/selectors'
+import { getCartItemList } from '../redux/reducers/cart/selectors'
+
+import { CartService } from '.'
+
 import { AuthResponse } from '../models/response/AuthResponse'
+import { IUser } from '../models/IUser'
 
-export const login = (email: string, password: string): Promise<AxiosResponse<AuthResponse>> => {
-	return $api.post<AuthResponse>('/auth/login', { email, password })
+export function useLogin() {
+	const dispatch = useDispatch()
+
+	async function login(email: string, password: string) {
+		try {
+			const response = await $api.post<AuthResponse>('/auth/login', { email, password })
+			localStorage.setItem('accessToken', response.data.accessToken)
+			dispatch(setUser(response.data.user))
+			dispatch(setIsRefreshed(false))
+			dispatch(setIsLogged(true))
+		} catch (err: any) {
+			console.error(err.response?.data?.message)
+		}
+	}
+
+	return login
 }
 
-export const registration = (name: string, email: string, password: string): Promise<AxiosResponse<AuthResponse>> => {
-	return $api.post<AuthResponse>('/auth/registration', { name, email, password })
+export function useRegistration() {
+	const dispatch = useDispatch()
+
+	async function registration(name: string, email: string, password: string) {
+		try {
+			const response = await $api.post<AuthResponse>('/auth/registration', { name, email, password })
+			localStorage.setItem('accessToken', response.data.accessToken)
+			dispatch(setUser(response.data.user))
+			dispatch(setIsRefreshed(false))
+			dispatch(setIsLogged(true))
+		} catch (err: any) {
+			console.error(err.response?.data?.message)
+		}
+	}
+
+	return registration
 }
 
-export const logout = (): Promise<void> => {
-	return $api.post('/auth/logout')
+export function useLogout() {
+	const dispatch = useDispatch()
+	const navigate = useNavigate()
+
+	async function logout() {
+		try {
+			navigate('/')
+			await $api.post('/auth/logout')
+			localStorage.removeItem('accessToken')
+			dispatch(clearCart())
+			dispatch(setUser({} as IUser))
+			dispatch(setIsRefreshed(false))
+			dispatch(setIsLogged(false))
+		} catch (err: any) {
+			console.error(err.response?.data?.message)
+		}
+	}
+
+	return logout
+}
+
+export function useCheckAuth() {
+	const dispatch = useDispatch()
+
+	async function checkAuth() {
+		try {
+			const response = await axios.get<AuthResponse>(
+				`${import.meta.env.VITE_SERVER_URL}/auth/refresh`,
+				{ withCredentials: true }
+			)
+			localStorage.setItem('accessToken', response.data.accessToken)
+			dispatch(setUser(response.data.user))
+			dispatch(setIsRefreshed(true))
+			dispatch(setIsLogged(true))
+		} catch (err: any) {
+			console.error(err.response?.data?.message)
+		}
+	}
+
+	return checkAuth
+}
+
+export function useUpdateCart() {
+	const dispatch = useDispatch()
+	const { id: userId } = useSelector(getUser)
+	const cartItems = useSelector(getCartItemList)
+
+	async function updateCart() {
+		try {
+			const dbCart = await CartService.getCart(userId)
+
+			for (let i = 0; i < cartItems.length; i++) {
+				if (dbCart.find(dbItem => dbItem.id === cartItems[i].id)) continue
+				await CartService.addItem(userId, cartItems[i].id, cartItems[i].quantity)
+			}
+
+			localStorage.setItem('cart', JSON.stringify(await CartService.getCart(userId)))
+			dispatch(updateItemList())
+		} catch (err: any) {
+			console.error(err.response?.data?.message)
+		}
+	}
+
+	return updateCart
 }

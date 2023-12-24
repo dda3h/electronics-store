@@ -1,6 +1,6 @@
 import data from '../../data/items.json' assert { type: 'json' }
 
-export const getAll = async () => {
+export async function getAll() {
 	const items = data.map(item => ({
 		...item,
 		image: process.env.SERVER_URL + item.image
@@ -9,7 +9,7 @@ export const getAll = async () => {
 	return items
 }
 
-export const getById = async (id: number) => {
+export async function getById(id: number) {
 	const item = data.find(item => item.id === id)
 
 	if (!item) {

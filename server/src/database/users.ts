@@ -1,7 +1,5 @@
 import { pool } from './index.js'
 
-import { UserDto } from '../dtos/user-dto.js'
-
 interface User {
 	id: number
 	name: string
@@ -9,13 +7,6 @@ interface User {
 	password: string
 	verification_link: string
 	is_verified: 0 | 1
-}
-
-export async function getAllUsers(): Promise<UserDto[]> {
-	const [users]: any[] = await pool.query(
-		'SELECT id, name, email, is_verified FROM users'
-	)
-	return users
 }
 
 export async function getUserByToken(refreshToken: string): Promise<User> {

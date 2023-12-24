@@ -12,6 +12,7 @@ module.exports = {
 		'react-refresh/only-export-components': 'warn',
 		// 'react-hooks/exhaustive-deps': 'false',
 		'@typescript-eslint/no-empty-function': 'warn',
-		'@typescript-eslint/ban-ts-comment': 'warn'
+		'@typescript-eslint/ban-ts-comment': 'off',
+		'no-mixed-spaces-and-tabs': 'warn'
 	}
 }

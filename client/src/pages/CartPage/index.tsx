@@ -15,13 +15,10 @@ import styles from './styles.module.scss'
 export default function CartPage(): React.ReactElement {
 	const { itemList, itemsQuantity } = useSelector(getCartState)
 
-	const [itemsData, setItemsData] = React.useState<(TItem & { quantity: number })[]>([])
+	const [itemsData, setItemsData] = React.useState<TItem[]>([])
 	const [isLoading, setIsLoading] = React.useState(true)
 
-	const totalPrice = itemsData.reduce(
-		(sum: number, item: TItem) => sum + item.price * (item.quantity || 0),
-		0
-	)
+	const totalPrice = itemsData.reduce((sum: number, item: TItem) => sum + item.price * (item.quantity || 0), 0)
 
 	React.useEffect(() => {
 		(async () => {

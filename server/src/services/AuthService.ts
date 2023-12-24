@@ -11,7 +11,7 @@ import { UserDto } from '../dtos/user-dto.js'
 
 import { ApiError } from '../exceptions/api-error.js'
 
-export const registration = async (name: string, email: string, password: string) => {
+export async function registration(name: string, email: string, password: string) {
 	const candidate = await UsersDB.getUserByEmail(email)
 
 	if (candidate) {
@@ -38,7 +38,7 @@ export const registration = async (name: string, email: string, password: string
 	return { ...tokens, user: userDto }
 }
 
-export const verify = async (verificationLink: string) => {
+export async function verify(verificationLink: string) {
 	const user = await UsersDB.getUserByVerificationLink(verificationLink)
 
 	if (!user) {
@@ -49,7 +49,7 @@ export const verify = async (verificationLink: string) => {
 	await UsersDB.updateUser(user)
 }
 
-export const login = async (email: string, password: string) => {
+export async function login(email: string, password: string) {
 	const user = await UsersDB.getUserByEmail(email)
 
 	if (!user) {
@@ -70,12 +70,12 @@ export const login = async (email: string, password: string) => {
 	return { ...tokens, user: userDto }
 }
 
-export const logout = async (refreshToken: string) => {
+export async function logout(refreshToken: string) {
 	const token = await TokensDB.deleteToken(refreshToken)
 	return token
 }
 
-export const refresh = async (refreshToken: string) => {
+export async function refresh(refreshToken: string) {
 	if (!refreshToken) {
 		throw ApiError.UnauthorizedError()
 	}
@@ -94,9 +94,4 @@ export const refresh = async (refreshToken: string) => {
 	await TokenService.saveToken(userDto.id, tokens.refreshToken)
 
 	return { ...tokens, user: userDto }
-}
-
-export const getAllUsers = async () => {
-	const users = await UsersDB.getAllUsers()
-	return users
 }

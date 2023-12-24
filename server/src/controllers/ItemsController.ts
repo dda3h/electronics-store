@@ -1,22 +1,22 @@
-import { NextFunction, Request, Response } from 'express'
+import { Request, Response } from 'express'
 
 import { ItemsService } from '../services/index.js'
 
-export const getAll = async (req: Request, res: Response, next: NextFunction) => {
+export async function getAll(req: Request, res: Response) {
 	try {
 		const items = await ItemsService.getAll()
 		return res.json(items)
-	} catch (error) {
-		console.error(error)
+	} catch (err) {
+		console.error(err)
 	}
 }
 
-export const getById = async (req: Request, res: Response, next: NextFunction) => {
+export async function getById(req: Request, res: Response) {
 	try {
 		const { id } = req.params
 		const item = await ItemsService.getById(Number(id))
 		return res.json(item)
-	} catch (error) {
-		console.error(error)
+	} catch (err) {
+		console.error(err)
 	}
 }

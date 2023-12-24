@@ -12,7 +12,7 @@ export default function Slider(): React.ReactElement {
 	const [activeSlideIndex, setActiveSlideIndex] = React.useState(0)
 	const autoNextTimer = React.useRef<number>(0)
 
-	const changeImage = (type: 'next' | 'prev') => {
+	function changeImage(type: 'next' | 'prev') {
 		if (type === 'next' && activeSlideIndex === slides.length - 1)
 			return setActiveSlideIndex(0)
 		if (type === 'prev' && activeSlideIndex === 0)

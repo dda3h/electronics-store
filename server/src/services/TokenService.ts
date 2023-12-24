@@ -4,40 +4,36 @@ import { TokensDB } from '../database/index.js'
 
 import { UserDto } from '../dtos/user-dto.js'
 
-export const generateTokens = (payload: UserDto) => {
-	// @ts-ignore
-	const accessToken: string = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {
+export function generateTokens(payload: UserDto) {
+	const accessToken: string = jwt.sign(payload, process.env.JWT_ACCESS_SECRET!, {
 		expiresIn: '15m'
 	})
-	// @ts-ignore
-	const refreshToken: string = jwt.sign(payload, process.env.JWT_REFRESH_SECRET, {
+	const refreshToken: string = jwt.sign(payload, process.env.JWT_REFRESH_SECRET!, {
 		expiresIn: '30d'
 	})
 
 	return { accessToken, refreshToken }
 }
 
-export const validationAccessToken = (token: string) => {
+export function validationAccessToken(token: string) {
 	try {
-		// @ts-ignore
-		const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET)
+		const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET!)
 		return userData
-	} catch (error) {
+	} catch (err) {
 		return null
 	}
 }
 
-export const validationRefreshToken = (token: string) => {
+export function validationRefreshToken(token: string) {
 	try {
-		// @ts-ignore
-		const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET)
+		const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET!)
 		return userData
-	} catch (error) {
+	} catch (err) {
 		return null
 	}
 }
 
-export const saveToken = async (userId: number, refreshToken: string) => {
+export async function saveToken(userId: number, refreshToken: string) {
 	const tokenData = await TokensDB.getTokenByUser(userId)
 
 	if (tokenData) {

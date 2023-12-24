@@ -23,7 +23,7 @@ export default function CheckFilter({ param, list, closeFilter }: Props): React.
 
 	const filterParam = searchParams.get(param)
 
-	const resetFilter = () => {
+	function resetFilter() {
 		searchParams.delete(param)
 		setSearchParams(searchParams)
 	}

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { getIsLogged } from '../../redux/reducers/user/selectors'
 
-import { AuthController } from '../../controllers'
+import { AuthService } from '../../services'
 
 import AddUserSVG from '../../icons/AddUser'
 import EmailSVG from '../../icons/Email'
@@ -25,7 +25,7 @@ export default function SignupPage(): React.ReactElement {
 
 	const [showPassword, setShowPassword] = React.useState<boolean>(false)
 
-	const registration = AuthController.useRegistration()
+	const registration = AuthService.useRegistration()
 
 	React.useEffect(() => {
 		if (isLogged) navigate('/account')

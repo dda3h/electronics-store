@@ -9,7 +9,7 @@ export default function NotFound(): React.ReactElement {
 
 	const query = searchParams.get('query') || ''
 
-	const resetFilters = () => {
+	function resetFilters() {
 		const uriQuery = encodeURIComponent(query.replace(/\s+/g, ' ').trim()).replace(
 			/%20/g,
 			'+'

@@ -23,8 +23,7 @@ const cartSlice = createSlice({
 		},
 
 		subItem: (state, action) => {
-			// @ts-ignore
-			state.itemList.find(item => item.id === action.payload.id).quantity -= 1
+			state.itemList.find(item => item.id === action.payload.id)!.quantity -= 1
 			state.itemsQuantity -= 1
 		},
 
@@ -36,10 +35,15 @@ const cartSlice = createSlice({
 		clearCart: state => {
 			state.itemList = []
 			state.itemsQuantity = 0
+		},
+
+		updateItemList: state => {
+			state.itemList = getCartFromLocalStorage().itemList
+			state.itemsQuantity = getCartFromLocalStorage().itemsQuantity
 		}
 	}
 })
 
-export const { addItem, subItem, removeItem, clearCart } = cartSlice.actions
+export const { addItem, subItem, removeItem, clearCart, updateItemList } = cartSlice.actions
 
 export default cartSlice.reducer

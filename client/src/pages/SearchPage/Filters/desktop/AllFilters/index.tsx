@@ -35,13 +35,13 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 		{ name: 'Brand', param: 'brand', condition: brandParam, component: <CheckFilter param="brand" list={2} /> }
 	]
 
-	const deleteParam = (param: string) => {
+	function deleteParam(param: string) {
 		searchParams.delete('page')
 		searchParams.delete(param)
 		setSearchParams(searchParams)
 	}
 
-	const onClickReset = () => {
+	function onClickReset() {
 		searchParams.delete('price')
 		searchParams.delete('category')
 		searchParams.delete('brand')
@@ -49,7 +49,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 		setSearchParams(searchParams)
 	}
 
-	const onClickDone = () => {
+	function onClickDone() {
 		closeFilter()
 		setUpdate(!update)
 	}
@@ -66,7 +66,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 			<div className={styles.header}>
 				<h1 className={styles.header__text}>Filters</h1>
 
-				<button onClick={() => closeFilter()} className={styles.header__button}>
+				<button onClick={closeFilter} className={styles.header__button}>
 					<CloseSVG className={styles['header__button-icon']} />
 				</button>
 			</div>

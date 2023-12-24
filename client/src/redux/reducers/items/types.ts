@@ -1,6 +1,6 @@
-import { Status, TItem } from '../../../types'
+import { Status, TItems } from '../../../types'
 
 export interface ItemsState {
-	array: TItem[]
+	array: TItems[]
 	status: Status
 }

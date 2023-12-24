@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateItemList } from '../redux/reducers/cart/slice'
 import { getCartItemList } from '../redux/reducers/cart/selectors'
+import { getIsLogged, getIsRefreshed, getUser } from '../redux/reducers/user/selectors'
 
-import { AuthController } from '../controllers'
+import { AuthService, CartService } from '../services'
 
 import HomePage from '../pages/HomePage'
 import ItemPage from '../pages/ItemPage'
@@ -21,12 +23,31 @@ import Footer from '../components/Footer'
 import styles from './styles.module.scss'
 
 export default function App(): React.ReactElement {
+	const dispatch = useDispatch()
+
 	const cartItemList = useSelector(getCartItemList)
+	const isLogged = useSelector(getIsLogged)
+	const isRefreshed = useSelector(getIsRefreshed)
+	const { id: userId } = useSelector(getUser)
 
 	const location = useLocation()
 	const hideHeaderFooter = ['/signup', '/login'].includes(location.pathname)
 
-	const checkAuth = AuthController.useCheckAuth()
+	const checkAuth = AuthService.useCheckAuth()
+	const updateCart = AuthService.useUpdateCart()
+
+	React.useEffect(() => {
+		(async () => {
+			if (isRefreshed) {
+				localStorage.setItem('cart', JSON.stringify(await CartService.getCart(userId)))
+				dispatch(updateItemList())
+			}
+		})()
+	}, [isRefreshed])
+
+	React.useEffect(() => {
+		if (isLogged && !isRefreshed) updateCart()
+	}, [isLogged])
 
 	React.useEffect(() => {
 		const json = JSON.stringify(cartItemList)
@@ -40,7 +61,7 @@ export default function App(): React.ReactElement {
 	return (
 		<>
 			<div>
-				{!hideHeaderFooter && (
+				{hideHeaderFooter || (
 					<div>
 						<Header />
 					</div>
@@ -60,7 +81,7 @@ export default function App(): React.ReactElement {
 				</div>
 			</div>
 
-			{!hideHeaderFooter && (
+			{hideHeaderFooter || (
 				<div>
 					<Footer />
 				</div>

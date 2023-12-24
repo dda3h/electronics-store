@@ -14,25 +14,23 @@ $api.interceptors.request.use(config => {
 
 $api.interceptors.response.use(
 	config => config,
-	async error => {
-		const originalRequest = error.config
+	async err => {
+		const originalRequest = err.config
 
-		if (error.response.status === 401 && error.config && !error.config._isRetry) {
+		if (err.response.status === 401 && err.config && !err.config._isRetry) {
 			originalRequest._isRetry = true
 			try {
 				const response = await axios.get<AuthResponse>(
 					`${import.meta.env.VITE_SERVER_URL}/auth/refresh`,
-					{
-						withCredentials: true
-					}
+					{ withCredentials: true }
 				)
 				localStorage.setItem('accessToken', response.data.accessToken)
 				return $api.request(originalRequest)
-			} catch (error) {
+			} catch (err) {
 				console.error('Unauthorized')
 			}
 		}
 
-		throw error
+		throw err
 	}
 )

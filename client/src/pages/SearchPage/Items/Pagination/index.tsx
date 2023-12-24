@@ -15,21 +15,21 @@ export default function Pagination({ pageCount }: { pageCount: number }): React.
 	const lastIndex = currentPage > 2 ? currentPage + 2 : 5
 	const numbers = allNumbers.slice(firstIndex, lastIndex)
 
-	const prevPage = () => {
+	function prevPage() {
 		if (currentPage === 1) return
 
 		searchParams.set('page', String(currentPage - 1))
 		setSearchParams(searchParams)
 	}
 
-	const nextPage = () => {
+	function nextPage() {
 		if (currentPage === pageCount) return
 
 		searchParams.set('page', String(currentPage + 1))
 		setSearchParams(searchParams)
 	}
 
-	const changePage = (number: number) => {
+	function changePage(number: number) {
 		searchParams.set('page', String(number))
 		setSearchParams(searchParams)
 	}

@@ -3,6 +3,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart } from '../../../redux/reducers/cart/slice'
 import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors'
+import { getIsLogged, getUser } from '../../../redux/reducers/user/selectors'
+
+import { CartService } from '../../../services'
 
 import CartSVG from '../../../icons/Cart'
 import TrashSVG from '../../../icons/Trash'
@@ -14,6 +17,14 @@ export default function Header(): React.ReactElement {
 
 	const itemsQuantity = useSelector(getCartItemsQuantity)
 
+	const { id: userId } = useSelector(getUser)
+	const isLogged = useSelector(getIsLogged)
+
+	function onClearCart() {
+		dispatch(clearCart())
+		if (isLogged) CartService.clearCart(userId)
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.logo}>
@@ -24,7 +35,7 @@ export default function Header(): React.ReactElement {
 				</h1>
 			</div>
 
-			<button onClick={() => dispatch(clearCart())} className={styles.clear}>
+			<button onClick={onClearCart} className={styles.clear}>
 				<TrashSVG className={styles.clear__svg} />
 
 				<h1 className={styles.clear__title}>Clear cart</h1>

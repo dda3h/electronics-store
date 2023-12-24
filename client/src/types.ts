@@ -4,7 +4,7 @@ export enum Status {
 	REJECTED = 'rejected'
 }
 
-export type TItem = {
+export type TItems = {
 	id: number
 	image: string
 	title: string
@@ -15,8 +15,16 @@ export type TItem = {
 	purchaseQuantity: number
 	rating: number
 	price: number
-	quantity?: number
 }
+
+export type TItem = TItems & {
+	quantity: number
+}
+
+export type TCartList = {
+	id: number
+	quantity: number
+}[]
 
 export enum Sorts {
 	POPULARITY = 'By popularity',

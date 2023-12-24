@@ -10,7 +10,7 @@ export default function SortFilter({ closeFilter }: { closeFilter: () => void })
 
 	const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity'
 
-	const changeSort = (index: number) => {
+	function changeSort(index: number) {
 		closeFilter()
 
 		const selectedSort = sortList[index].replace(/ /g, '_')

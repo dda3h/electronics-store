@@ -29,22 +29,17 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 
 	const filterList = [
 		{ name: 'Price', param: 'price', condition: priceParam, component: <PriceFilter /> },
-		{
-			name: 'Category',
-			param: 'category',
-			condition: categoryParam,
-			component: <Filter param="category" list={1} />
-		},
+		{ name: 'Category', param: 'category', condition: categoryParam, component: <Filter param="category" list={1} /> },
 		{ name: 'Brand', param: 'brand', condition: brandParam, component: <Filter param="brand" list={2} /> }
 	]
 
-	const deleteParam = (param: string) => {
+	function deleteParam(param: string) {
 		searchParams.delete('page')
 		searchParams.delete(param)
 		setSearchParams(searchParams)
 	}
 
-	const onClickReset = () => {
+	function onClickReset() {
 		searchParams.delete('price')
 		searchParams.delete('category')
 		searchParams.delete('brand')
@@ -52,7 +47,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 		setSearchParams(searchParams)
 	}
 
-	const onClickDone = () => {
+	function onClickDone() {
 		closeFilter()
 		setUpdate(!update)
 	}
@@ -76,7 +71,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 						</button>
 					)}
 
-					<button onClick={() => closeFilter()} className={styles.header__button}>
+					<button onClick={closeFilter} className={styles.header__button}>
 						<CloseSVG className={styles['header__button-icon']} />
 					</button>
 				</div>
