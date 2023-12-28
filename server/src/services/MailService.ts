@@ -19,10 +19,10 @@ export async function sendVerificationMail(to: string, link: string) {
 			subject: 'Account verification on ' + process.env.SERVER_URL,
 			text: '',
 			html: `
-			  <div>
-				<h1>Please click on the link to verify your email:</h1>
-				<a href="${link}">${link}</a>
-			  </div>
+				<div>
+					<h1>Please click on the link to verify your email:</h1>
+					<a href="${link}">${link}</a>
+				</div>
 			`
 		})
 	} catch (err) {

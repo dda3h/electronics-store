@@ -19,11 +19,11 @@ export default function SignupPage(): React.ReactElement {
 
 	const isLogged = useSelector(getIsLogged)
 
-	const [name, setName] = React.useState<string>('')
-	const [email, setEmail] = React.useState<string>('')
-	const [password, setPassword] = React.useState<string>('')
+	const [name, setName] = React.useState('')
+	const [email, setEmail] = React.useState('')
+	const [password, setPassword] = React.useState('')
 
-	const [showPassword, setShowPassword] = React.useState<boolean>(false)
+	const [showPassword, setShowPassword] = React.useState(false)
 
 	const registration = AuthService.useRegistration()
 

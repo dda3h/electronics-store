@@ -17,11 +17,11 @@ export default function LoginPage(): React.ReactElement {
 	const navigate = useNavigate()
 
 	const isLogged = useSelector(getIsLogged)
-	const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
+	const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-	const [email, setEmail] = React.useState<string>('')
-	const [password, setPassword] = React.useState<string>('')
-	const [showPassword, setShowPassword] = React.useState<boolean>(false)
+	const [email, setEmail] = React.useState('')
+	const [password, setPassword] = React.useState('')
+	const [showPassword, setShowPassword] = React.useState(false)
 
 	const login = AuthService.useLogin()
 

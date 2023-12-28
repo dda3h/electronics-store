@@ -10,7 +10,7 @@ import styles from './styles.module.scss'
 
 export default function Slider(): React.ReactElement {
 	const [activeSlideIndex, setActiveSlideIndex] = React.useState(0)
-	const autoNextTimer = React.useRef<number>(0)
+	const autoNextTimer = React.useRef(0)
 
 	function changeImage(type: 'next' | 'prev') {
 		if (type === 'next' && activeSlideIndex === slides.length - 1)
