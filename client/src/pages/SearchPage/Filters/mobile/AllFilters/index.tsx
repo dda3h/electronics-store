@@ -29,8 +29,8 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 
 	const filterList = [
 		{ name: 'Price', param: 'price', condition: priceParam, component: <PriceFilter /> },
-		{ name: 'Category', param: 'category', condition: categoryParam, component: <Filter param="category" list={1} /> },
-		{ name: 'Brand', param: 'brand', condition: brandParam, component: <Filter param="brand" list={2} /> }
+		{ name: 'Category', param: 'category', condition: categoryParam, component: <Filter param='category' list={1} /> },
+		{ name: 'Brand', param: 'brand', condition: brandParam, component: <Filter param='brand' list={2} /> }
 	]
 
 	function deleteParam(param: string) {

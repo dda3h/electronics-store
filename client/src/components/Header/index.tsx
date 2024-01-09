@@ -10,7 +10,7 @@ export default function Header(): React.ReactElement {
 	return (
 		<header className={styles.wrapper}>
 			<button className={styles.logo}>
-				<Link to="/">BestLogoEver</Link>
+				<Link to='/'>BestLogoEver</Link>
 			</button>
 
 			<Search />

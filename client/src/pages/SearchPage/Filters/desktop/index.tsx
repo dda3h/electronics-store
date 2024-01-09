@@ -49,7 +49,9 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 					<button
 						onClick={() => changeFilter(index + 1)}
 						className={
-							activeFilter === index + 1 ? `${styles.button} ${styles['button--active']}` : styles.button
+							activeFilter === index + 1
+								? `${styles.button} ${styles['button--active']}`
+								: styles.button
 						}
 					>
 						{filter.icon}
@@ -63,7 +65,10 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 						)}
 					</button>
 
-					<div style={activeFilter === index + 1 ? {} : { display: 'none' }} className={styles.filterMenu}>
+					<div
+						style={activeFilter === index + 1 ? {} : { display: 'none' }}
+						className={styles.filterMenu}
+					>
 						{filter.html}
 					</div>
 				</div>
@@ -72,7 +77,10 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 			{activeFilter !== 0 && <div onClick={closeFilter} className={styles.filterMenu__overlay} />}
 
 			<div className={styles.allFilters}>
-				<button onClick={() => changeFilter(allFiltersIndex)} className={styles.allFilters__button}>
+				<button
+					onClick={() => changeFilter(allFiltersIndex)}
+					className={styles.allFilters__button}
+				>
 					<SettingsSVG className={styles.allFilters__icon} />
 					All filters
 					{(categoryCount || brandCount || priceCount) && (
@@ -82,7 +90,11 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 					)}
 				</button>
 
-				<AllFilters closeFilter={closeFilter} activeFilter={activeFilter} allFiltersIndex={allFiltersIndex} />
+				<AllFilters 
+					closeFilter={closeFilter}
+					activeFilter={activeFilter}
+					allFiltersIndex={allFiltersIndex}
+				/>
 
 				{activeFilter === allFiltersIndex && (
 					<div onClick={closeFilter} className={styles.allFilters__overlay} />

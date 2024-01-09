@@ -41,7 +41,7 @@ export default function PriceFilter({ closeFilter }: { closeFilter: () => void }
 					<p style={{ color: '#646464' }}>From</p>
 
 					<input
-						type="text"
+						type='text'
 						value={inputFrom}
 						onChange={e => setInputFrom(e.target.value.replace(/\D/g, ''))}
 						className={styles.input}
@@ -52,7 +52,7 @@ export default function PriceFilter({ closeFilter }: { closeFilter: () => void }
 					<p style={{ color: '#646464' }}>To</p>
 
 					<input
-						type="text"
+						type='text'
 						value={inputTo}
 						onChange={e => setInputTo(e.target.value.replace(/\D/g, ''))}
 						className={styles.input}

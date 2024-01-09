@@ -18,7 +18,7 @@ export default function NavBar(): React.ReactElement {
 
 	return (
 		<nav className={styles.wrapper}>
-			<Link to="/">
+			<Link to='/'>
 				<button className={`${styles.button} ${styles.button__mobile}`}>
 					<HomeSVG className={styles.button__svg} />
 					<p className={styles.button__text}>Home</p>
@@ -34,7 +34,7 @@ export default function NavBar(): React.ReactElement {
 				</button>
 			</Link>
 
-			<Link to="/cart">
+			<Link to='/cart'>
 				<button className={styles.button}>
 					<CartSVG className={styles.button__svg} />
 					<p className={styles.button__text}>Cart</p>

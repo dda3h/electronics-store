@@ -69,14 +69,14 @@ export default function App(): React.ReactElement {
 
 				<div className={styles.content}>
 					<Routes>
-						<Route path="/" element={<HomePage />} />
-						<Route path="/item/:id" element={<ItemPage />} />
-						<Route path="/cart" element={<CartPage />} />
-						<Route path="/search" element={<SearchPage />} />
-						<Route path="/signup" element={<SignupPage />} />
-						<Route path="/login" element={<LoginPage />} />
-						<Route path="/account" element={<AccountPage />} />
-						<Route path="*" element={<NotFoundPage />} />
+						<Route path='/' element={<HomePage />} />
+						<Route path='/item/:id' element={<ItemPage />} />
+						<Route path='/cart' element={<CartPage />} />
+						<Route path='/search' element={<SearchPage />} />
+						<Route path='/signup' element={<SignupPage />} />
+						<Route path='/login' element={<LoginPage />} />
+						<Route path='/account' element={<AccountPage />} />
+						<Route path='*' element={<NotFoundPage />} />
 					</Routes>
 				</div>
 			</div>

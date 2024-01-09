@@ -44,13 +44,13 @@ export default function Search(): React.ReactElement {
 			<SearchSVG className={styles.searchSvg} />
 
 			<input
-				type="text"
+				type='text'
 				ref={searchInputRef}
 				value={inputValue}
 				onChange={e => setInputValue(e.target.value)}
 				onKeyDown={e => e.key === 'Enter' && handleSearch(e)}
 				className={styles.input}
-				placeholder="Search..."
+				placeholder='Search...'
 			/>
 
 			{inputValue && (

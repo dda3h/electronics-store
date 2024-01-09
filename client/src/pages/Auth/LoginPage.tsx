@@ -32,7 +32,7 @@ export default function LoginPage(): React.ReactElement {
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.intro}>
-				<Link to="/">
+				<Link to='/'>
 					<h1 className={styles.intro__logo}>
 						El<span style={{ color: '#e61e41' }}>.</span>Store
 					</h1>
@@ -46,10 +46,10 @@ export default function LoginPage(): React.ReactElement {
 					className={`${styles.svg} ${email ? styles['svg--active'] : ''} `}
 				/>
 				<input
-					type="email"
+					type='email'
 					value={email}
 					onChange={e => setEmail(e.target.value)}
-					placeholder="Email"
+					placeholder='Email'
 					className={styles.input}
 				/>
 			</div>
@@ -63,7 +63,7 @@ export default function LoginPage(): React.ReactElement {
 					type={showPassword ? 'text' : 'password'}
 					value={password}
 					onChange={e => setPassword(e.target.value)}
-					placeholder="Password"
+					placeholder='Password'
 					className={styles.input}
 				/>
 				<button onClick={() => setShowPassword(!showPassword)}>
@@ -109,7 +109,7 @@ export default function LoginPage(): React.ReactElement {
 			<div style={{ textAlign: 'end', display: 'flex', marginTop: '0.3rem' }}>
 				<p className={styles.signup}>
 					Don't have an account?{' '}
-					<Link to="/signup" className={styles.link}>
+					<Link to='/signup' className={styles.link}>
 						Sign up
 					</Link>
 				</p>

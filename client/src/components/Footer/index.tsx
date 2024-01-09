@@ -9,7 +9,7 @@ export default function Footer(): React.ReactElement {
 
 			<div className={styles.socialNetworks}>
 				{socialNetworks.map((network, index) => (
-					<a href={network.link} target="_blank" key={index}>
+					<a href={network.link} target='_blank' key={index}>
 						{network.icon}
 					</a>
 				))}

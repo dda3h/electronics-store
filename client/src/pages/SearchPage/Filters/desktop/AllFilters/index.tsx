@@ -62,7 +62,10 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 	}, [activeFilter])
 
 	return (
-		<div style={activeFilter === allFiltersIndex ? { right: '0' } : { right: '-100%' }} className={styles.wrapper}>
+		<div 
+			style={activeFilter === allFiltersIndex ? { right: '0' } : { right: '-100%' }}
+			className={styles.wrapper}
+		>
 			<div className={styles.header}>
 				<h1 className={styles.header__text}>Filters</h1>
 
