@@ -12,18 +12,25 @@ export default function Slider(): React.ReactElement {
 	const [activeSlideIndex, setActiveSlideIndex] = React.useState(0)
 	const autoNextTimer = React.useRef(0)
 
+	const [isAutoNext, setIsAutoNext] = React.useState(true)
+
 	function changeImage(type: 'next' | 'prev') {
-		if (type === 'next' && activeSlideIndex === slides.length - 1)
+		if (type === 'next' && activeSlideIndex === slides.length - 1) {
 			return setActiveSlideIndex(0)
-		if (type === 'prev' && activeSlideIndex === 0)
+		}
+
+		if (type === 'prev' && activeSlideIndex === 0) {
 			return setActiveSlideIndex(slides.length - 1)
+		}
 
 		setActiveSlideIndex(activeSlideIndex + (type === 'next' ? 1 : -1))
 	}
 
 	React.useEffect(() => {
 		clearTimeout(autoNextTimer.current)
-		autoNextTimer.current = setTimeout(() => changeImage('next'), 5000)
+		if (isAutoNext) {
+			autoNextTimer.current = setTimeout(() => changeImage('next'), 5000)
+		}
 	}, [activeSlideIndex])
 
 	return (
@@ -37,14 +44,17 @@ export default function Slider(): React.ReactElement {
 				))}
 			</div>
 
-			<button onClick={() => changeImage('prev')} className={styles.arrow}>
+			<button
+				onClick={() => { changeImage('prev'); setIsAutoNext(false) }}
+				className={styles.arrow}
+			>
 				<div className={styles.arrow__icon}>
 					<LeftArrow />
 				</div>
 			</button>
 
 			<button
-				onClick={() => changeImage('next')}
+				onClick={() => { changeImage('next'); setIsAutoNext(false) }}
 				style={{ right: 0 }}
 				className={styles.arrow}
 			>
@@ -53,7 +63,7 @@ export default function Slider(): React.ReactElement {
 				</div>
 			</button>
 
-			<Link to={slides[activeSlideIndex].link} className={styles.imageDim}></Link>
+			<Link to={slides[activeSlideIndex].link} className={styles.imageDim} />
 		</div>
 	)
 }
