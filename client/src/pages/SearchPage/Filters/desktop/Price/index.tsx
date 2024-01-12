@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns'
@@ -7,14 +7,14 @@ import getPrices from '../../hooks/usePrices'
 
 import styles from './styles.module.scss'
 
-export default function PriceFilter({ closeFilter }: { closeFilter: () => void }): React.ReactElement {
+export default function PriceFilter({ closeFilter }: { closeFilter: () => void }) {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [minPrice, maxPrice] = getPrices()
 
 	const priceParam = searchParams.get('price')
 
-	const [inputFrom, setInputFrom] = React.useState<string>(minPrice)
-	const [inputTo, setInputTo] = React.useState<string>(maxPrice)
+	const [inputFrom, setInputFrom] = useState(minPrice)
+	const [inputTo, setInputTo] = useState(maxPrice)
 
 	function resetPrices() {
 		setInputFrom(minPrice)
@@ -29,7 +29,7 @@ export default function PriceFilter({ closeFilter }: { closeFilter: () => void }
 		setSearchParams(searchParams)
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setInputFrom(priceParam?.split('-')[0].replace(/\D/g, '') || minPrice)
 		setInputTo(priceParam?.split('-')[1]?.replace(/\D/g, '') || maxPrice)
 	}, [minPrice, maxPrice, window.location.href])

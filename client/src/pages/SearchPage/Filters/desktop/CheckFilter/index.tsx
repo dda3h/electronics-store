@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns'
@@ -16,7 +15,7 @@ interface Props {
 	closeFilter: () => void
 }
 
-export default function CheckFilter({ param, list, closeFilter }: Props): React.ReactElement {
+export default function CheckFilter({ param, list, closeFilter }: Props) {
 	const filterList = useFilteredFilters(list)
 	const changeFilter = useChangeFilter()
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -31,9 +30,9 @@ export default function CheckFilter({ param, list, closeFilter }: Props): React.
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.filters}>
-				{filterList.map((filter, index) => (
+				{filterList.map((filter, i) => (
 					<button
-						onClick={() => changeFilter({ filterList, index, param })}
+						onClick={() => changeFilter({ filterList, index: i, param })}
 						className={
 							filterParam
 								?.split(' ')
@@ -41,7 +40,7 @@ export default function CheckFilter({ param, list, closeFilter }: Props): React.
 								? `${styles.button} ${styles.button__active}`
 								: styles.button
 						}
-						key={index}
+						key={i}
 					>
 						<span className={styles.button__check}>
 							<CheckSVG />

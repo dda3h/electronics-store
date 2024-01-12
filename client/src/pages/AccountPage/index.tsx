@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -8,7 +8,7 @@ import { AuthService } from '../../services'
 
 import styles from './styles.module.scss'
 
-export default function AccountPage(): React.ReactElement {
+export default function AccountPage() {
 	const navigate = useNavigate()
 
 	const user = useSelector(getUser)
@@ -16,7 +16,7 @@ export default function AccountPage(): React.ReactElement {
 
 	const logout = AuthService.useLogout()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (!isLogged) navigate('/login')
 	}, [isLogged])
 

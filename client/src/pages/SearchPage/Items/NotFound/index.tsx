@@ -1,9 +1,7 @@
-import React from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-
 import styles from './styles.module.scss'
 
-export default function NotFound(): React.ReactElement {
+export default function NotFound() {
 	const navigate = useNavigate()
 	const [searchParams] = useSearchParams()
 

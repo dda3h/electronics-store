@@ -18,7 +18,7 @@ export function validationAccessToken(token: string) {
 	try {
 		const userData = jwt.verify(token, process.env.JWT_ACCESS_SECRET!)
 		return userData
-	} catch (err) {
+	} catch (e) {
 		return null
 	}
 }
@@ -27,7 +27,7 @@ export function validationRefreshToken(token: string) {
 	try {
 		const userData = jwt.verify(token, process.env.JWT_REFRESH_SECRET!)
 		return userData
-	} catch (err) {
+	} catch (e) {
 		return null
 	}
 }

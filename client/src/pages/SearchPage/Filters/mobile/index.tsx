@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import AllFilters from './AllFilters'
@@ -16,11 +16,7 @@ interface Props {
 
 const sortList = ['By popularity', 'By rating', 'Cheap first', 'Expensive first']
 
-export default function FiltersMobile({
-	activeFilter,
-	setActiveFilter,
-	allFiltersIndex
-}: Props): React.ReactElement {
+export default function FiltersMobile({ activeFilter, setActiveFilter, allFiltersIndex }: Props) {
 	const [searchParams, setSearchParams] = useSearchParams()
 
 	const categoryCount = searchParams.get('category')?.split(' ').length
@@ -29,7 +25,7 @@ export default function FiltersMobile({
 
 	const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity'
 
-	const [isSortOpen, setIsSortOpen] = React.useState<boolean>(false)
+	const [isSortOpen, setIsSortOpen] = useState<boolean>(false)
 
 	function toggleSortList() {
 		setIsSortOpen(!isSortOpen)
@@ -67,13 +63,13 @@ export default function FiltersMobile({
 					className={styles.sortMenu}
 				>
 					<div className={styles.sorts}>
-						{sortList.map((sort, index) => (
+						{sortList.map((sort, i) => (
 							<button
-								onClick={() => changeSort(index)}
+								onClick={() => changeSort(i)}
 								className={`${styles.sort} ${
 									sortParam === sort ? styles['sort--active'] : ''
 								}`}
-								key={index}
+								key={i}
 							>
 								{sort}
 							</button>

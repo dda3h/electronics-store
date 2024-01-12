@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import Item from './Item'
@@ -9,7 +8,7 @@ import useFilteredData from './useFilteredData'
 
 import styles from './styles.module.scss'
 
-export default function Items(): React.ReactElement {
+export default function Items() {
 	const data = useFilteredData()
 	const [searchParams] = useSearchParams()
 
@@ -24,8 +23,8 @@ export default function Items(): React.ReactElement {
 
 	return (
 		<div className={styles.wrapper}>
-			{items.map((item, index) => (
-				<Item {...item} key={index} />
+			{items.map((item, i) => (
+				<Item {...item} key={i} />
 			))}
 
 			{pageCount > 1 && <Pagination pageCount={pageCount} />}

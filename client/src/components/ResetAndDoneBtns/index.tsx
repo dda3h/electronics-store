@@ -1,5 +1,3 @@
-import React from 'react'
-
 import styles from './styles.module.scss'
 
 interface Props {
@@ -9,7 +7,7 @@ interface Props {
 	doneFunc?: () => void
 }
 
-export default function ResetAndDoneBtns(props: Props): React.ReactElement {
+export default function ResetAndDoneBtns(props: Props) {
 	return (
 		<div className={styles.wrapper}>
 			{props.condition && (

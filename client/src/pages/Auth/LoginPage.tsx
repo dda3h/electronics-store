@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -13,19 +13,18 @@ import CrossedOutEyeSVG from '../../icons/CossedOutEye'
 
 import styles from './styles.module.scss'
 
-export default function LoginPage(): React.ReactElement {
+export default function LoginPage() {
 	const navigate = useNavigate()
 
 	const isLogged = useSelector(getIsLogged)
-	const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-	const [email, setEmail] = React.useState('')
-	const [password, setPassword] = React.useState('')
-	const [showPassword, setShowPassword] = React.useState(false)
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [showPassword, setShowPassword] = useState(false)
 
 	const login = AuthService.useLogin()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (isLogged) navigate('/account')
 	}, [isLogged])
 
@@ -67,40 +66,17 @@ export default function LoginPage(): React.ReactElement {
 					className={styles.input}
 				/>
 				<button onClick={() => setShowPassword(!showPassword)}>
-					{showPassword ? (
-						<CrossedOutEyeSVG className={styles.hidePasswordSvg} />
-					) : (
-						<EyeSVG className={styles.hidePasswordSvg} />
-					)}
+					{showPassword 
+						? <CrossedOutEyeSVG className={styles.hidePasswordSvg} />
+						: <EyeSVG className={styles.hidePasswordSvg} />}
 				</button>
 			</div>
 
 			<button>
-				<span
-					onClick={() => setIsModalOpen(true)}
-					className={`${styles.smallText} ${styles.link}`}
-				>
+				<span className={`${styles.smallText} ${styles.link}`}>
 					Forgot password?
 				</span>
 			</button>
-			<div
-				style={isModalOpen ? { top: '50%' } : { top: '-50%' }}
-				className={styles.modal}
-			>
-				<p>Looks like your problem. Create a new account then.</p>
-				<button
-					onClick={() => navigate('/signup')}
-					className={styles.modal__button}
-				>
-					Sign In
-				</button>
-			</div>
-			{isModalOpen && (
-				<div
-					onClick={() => setIsModalOpen(false)}
-					className={styles.modal__dim}
-				></div>
-			)}
 
 			<button onClick={() => login(email, password)} className={styles.button}>
 				Sign In

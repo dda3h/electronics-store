@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 
 import { useAppDispatch } from '../../redux/store'
@@ -13,14 +13,14 @@ import Items from './Items'
 
 import styles from './styles.module.scss'
 
-export default function SearchPage(): React.ReactElement {
+export default function SearchPage() {
 	const dispatch = useAppDispatch()
 	const location = useLocation()
 	const [searchParams] = useSearchParams()
 
 	const query = searchParams.get('query')
-	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
-	const [activeFilter, setActiveFilter] = React.useState<number>(0)
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+	const [activeFilter, setActiveFilter] = useState<number>(0)
 	const allFiltersIndex = 5
 
 	const status = useSelector(getItemsStatus)
@@ -30,7 +30,7 @@ export default function SearchPage(): React.ReactElement {
 			item.description.toLowerCase().includes(query?.toLowerCase() || '')
 	)
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const handleResize = () => setWindowWidth(window.innerWidth)
 
 		window.addEventListener('resize', handleResize)
@@ -40,7 +40,7 @@ export default function SearchPage(): React.ReactElement {
 		}
 	}, [])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchItems())
 	}, [location.pathname])
 

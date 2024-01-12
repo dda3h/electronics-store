@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -11,7 +10,7 @@ import CartSVG from '../../../icons/Cart'
 
 import styles from './styles.module.scss'
 
-export default function NavBar(): React.ReactElement {
+export default function NavBar() {
 	const itemsQuantity = useSelector(getCartItemsQuantity)
 
 	const isLogged = useSelector(getIsLogged)

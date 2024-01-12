@@ -1,15 +1,14 @@
-import React from 'react'
 import { socialNetworks } from './socialNetworks'
 import styles from './styles.module.scss'
 
-export default function Footer(): React.ReactElement {
+export default function Footer() {
 	return (
 		<footer className={styles.wrapper}>
 			<h1 className={styles.header}>Contact me</h1>
 
 			<div className={styles.socialNetworks}>
-				{socialNetworks.map((network, index) => (
-					<a href={network.link} target='_blank' key={index}>
+				{socialNetworks.map((network) => (
+					<a href={network.link} target='_blank' key={network.label}>
 						{network.icon}
 					</a>
 				))}

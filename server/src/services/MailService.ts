@@ -25,7 +25,7 @@ export async function sendVerificationMail(to: string, link: string) {
 				</div>
 			`
 		})
-	} catch (err) {
-		console.error(err)
+	} catch (e) {
+		console.error(e)
 	}
 }

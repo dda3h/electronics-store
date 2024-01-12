@@ -1,10 +1,7 @@
-import React from 'react'
-
 import PressButton from '../../components/PressButton'
-
 import styles from './styles.module.scss'
 
-export default function NotFoundPage(): React.ReactElement {
+export default function NotFoundPage() {
 	return (
 		<div className={styles.wrapper}>
 			<h1 className={styles.header}>Sorry, we can't find that page</h1>

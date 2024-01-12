@@ -1,6 +1,5 @@
-import React from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
+
 import { clearCart } from '../../../redux/reducers/cart/slice'
 import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors'
 import { getIsLogged, getUser } from '../../../redux/reducers/user/selectors'
@@ -12,7 +11,7 @@ import TrashSVG from '../../../icons/Trash'
 
 import styles from './styles.module.scss'
 
-export default function Header(): React.ReactElement {
+export default function Header() {
 	const dispatch = useDispatch()
 
 	const itemsQuantity = useSelector(getCartItemsQuantity)

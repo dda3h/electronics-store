@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import useFilteredFilters from '../../../hooks/useFilteredFilters'
@@ -11,7 +10,7 @@ interface Props {
 	list: 1 | 2
 }
 
-export default function Filter({ param, list }: Props): React.ReactElement {
+export default function Filter({ param, list }: Props) {
 	const filterList = useFilteredFilters(list)
 	const changeFilter = useChangeFilter()
 	const [searchParams] = useSearchParams()
@@ -20,20 +19,17 @@ export default function Filter({ param, list }: Props): React.ReactElement {
 
 	return (
 		<div className={styles.wrapper}>
-			{filterList.map((filter, index) => (
+			{filterList.map((filter, i) => (
 				<button
-					onClick={() => changeFilter({ filterList, index, param })}
+					onClick={() => changeFilter({ filterList, index: i, param })}
 					className={
 						filterParams
 							?.split(' ')
-							.find(
-								filterParam =>
-									filterParam === filter.name.replace(/ /g, '_')
-							)
+							.find(filterParam => filterParam === filter.name.replace(/ /g, '_'))
 							? `${styles.button} ${styles.button__active}`
 							: styles.button
 					}
-					key={index}
+					key={i}
 				>
 					{filter.name}{' '}
 					<span style={{ color: '#646464' }}>{filter.quantity}</span>

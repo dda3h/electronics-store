@@ -1,8 +1,7 @@
-import React from 'react'
 import PressButton from '../../../components/PressButton'
 import styles from './styles.module.scss'
 
-export default function EmptyCart(): React.ReactElement {
+export default function EmptyCart() {
 	return (
 		<div className={styles.wrapper}>
 			<img src='src/assets/images/empty-cart.png' className={styles.image} />

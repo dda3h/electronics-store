@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 import SearchSVG from '../../../icons/Search'
@@ -6,10 +6,10 @@ import CloseSVG from '../../../icons/Close'
 
 import styles from './styles.module.scss'
 
-export default function Search(): React.ReactElement {
-	const [inputValue, setInputValue] = React.useState('')
+export default function Search() {
+	const [inputValue, setInputValue] = useState('')
 
-	const searchInputRef = React.useRef<HTMLInputElement>(null)
+	const searchInputRef = useRef<HTMLInputElement>(null)
 
 	const navigate = useNavigate()
 	const location = useLocation()
@@ -35,7 +35,7 @@ export default function Search(): React.ReactElement {
 		navigate(`/search?query=${uriQuery}`)
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setInputValue(location.pathname === '/search' ? query : '')
 	}, [location.pathname])
 

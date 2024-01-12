@@ -22,7 +22,7 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction) 
 		// @ts-ignore
 		req.user = userData
 		next()
-	} catch (err) {
+	} catch (e) {
 		return next(ApiError.UnauthorizedError())
 	}
 }

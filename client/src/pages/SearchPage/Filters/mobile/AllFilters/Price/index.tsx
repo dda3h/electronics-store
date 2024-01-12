@@ -1,20 +1,20 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import getPrices from '../../../hooks/usePrices'
 
 import styles from './styles.module.scss'
 
-export default function PriceFilter(): React.ReactElement {
+export default function PriceFilter() {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const [minPrice, maxPrice] = getPrices()
 
 	const priceParam = searchParams.get('price')
 
-	const [inputFrom, setInputFrom] = React.useState<string>(minPrice)
-	const [inputTo, setInputTo] = React.useState<string>(maxPrice)
+	const [inputFrom, setInputFrom] = useState(minPrice)
+	const [inputTo, setInputTo] = useState(maxPrice)
 
-	const [update, setUpdate] = React.useState<boolean>(true)
+	const [update, setUpdate] = useState(true)
 
 	function changePrices(value: string, type: 'min' | 'max') {
 		if (type === 'min') setInputFrom(value)
@@ -23,7 +23,7 @@ export default function PriceFilter(): React.ReactElement {
 		setUpdate(!update)
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const isNotEmpty = inputFrom && inputTo
 		const areThereAnyChanges = inputFrom !== minPrice || inputTo !== maxPrice
 
@@ -33,7 +33,7 @@ export default function PriceFilter(): React.ReactElement {
 		}
 	}, [update])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setInputFrom(priceParam?.split('-')[0].replace(/\D/g, '') || minPrice)
 		setInputTo(priceParam?.split('-')[1]?.replace(/\D/g, '') || maxPrice)
 	}, [minPrice, maxPrice, window.location.href])

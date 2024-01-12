@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import PriceFilter from './Price'
@@ -17,11 +17,11 @@ interface Props {
 	allFiltersIndex: number
 }
 
-export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex }: Props): React.ReactElement {
+export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex }: Props) {
 	const [searchParams, setSearchParams] = useSearchParams()
 
-	const filtersRef = React.useRef<HTMLDivElement>(null)
-	const [update, setUpdate] = React.useState<boolean>(true)
+	const filtersRef = useRef<HTMLDivElement>(null)
+	const [update, setUpdate] = useState(true)
 
 	const priceParam = searchParams.get('price')
 	const categoryParam = searchParams.get('category')
@@ -52,7 +52,7 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 		setUpdate(!update)
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		filtersRef.current?.scrollTo(0, 0)
 
 		if (activeFilter === allFiltersIndex) document.body.style.overflow = 'hidden'
@@ -79,10 +79,10 @@ export default function AllFilters({ closeFilter, activeFilter, allFiltersIndex 
 
 			<div ref={filtersRef} className={styles.filters}>
 				{filterList.map(
-					(filter, index) =>
+					(filter, i) =>
 						// eslint-disable-next-line react-hooks/rules-of-hooks
-						(index === 1 || index === 2 ? !!useFilteredFilters(index).length : true) && (
-							<div className={styles.filter} key={index}>
+						(i === 1 || i === 2 ? !!useFilteredFilters(i).length : true) && (
+							<div className={styles.filter} key={i}>
 								<div className={styles.nameAndReset}>
 									<h1 className={styles.nameAndReset__name}>{filter.name}</h1>
 

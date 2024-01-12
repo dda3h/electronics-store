@@ -23,8 +23,8 @@ export function useLogin() {
 			dispatch(setUser(response.data.user))
 			dispatch(setIsRefreshed(false))
 			dispatch(setIsLogged(true))
-		} catch (err: any) {
-			console.error(err.response?.data?.message)
+		} catch (e: any) {
+			console.error(e.response?.data?.message)
 		}
 	}
 
@@ -41,8 +41,8 @@ export function useRegistration() {
 			dispatch(setUser(response.data.user))
 			dispatch(setIsRefreshed(false))
 			dispatch(setIsLogged(true))
-		} catch (err: any) {
-			console.error(err.response?.data?.message)
+		} catch (e: any) {
+			console.error(e.response?.data?.message)
 		}
 	}
 
@@ -62,8 +62,8 @@ export function useLogout() {
 			dispatch(setUser({} as IUser))
 			dispatch(setIsRefreshed(false))
 			dispatch(setIsLogged(false))
-		} catch (err: any) {
-			console.error(err.response?.data?.message)
+		} catch (e: any) {
+			console.error(e.response?.data?.message)
 		}
 	}
 
@@ -83,8 +83,8 @@ export function useCheckAuth() {
 			dispatch(setUser(response.data.user))
 			dispatch(setIsRefreshed(true))
 			dispatch(setIsLogged(true))
-		} catch (err: any) {
-			console.error(err.response?.data?.message)
+		} catch (e: any) {
+			console.error(e.response?.data?.message)
 		}
 	}
 
@@ -107,8 +107,8 @@ export function useUpdateCart() {
 
 			localStorage.setItem('cart', JSON.stringify(await CartService.getCart(userId)))
 			dispatch(updateItemList())
-		} catch (err: any) {
-			console.error(err.response?.data?.message)
+		} catch (e: any) {
+			console.error(e.response?.data?.message)
 		}
 	}
 

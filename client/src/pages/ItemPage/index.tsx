@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ import { Status } from '../../types'
 
 import styles from './styles.module.scss'
 
-export default function ItemPage(): React.ReactElement {
+export default function ItemPage() {
 	const params = useParams()
 	const dispatch = useAppDispatch()
 
@@ -42,7 +42,7 @@ export default function ItemPage(): React.ReactElement {
 		}
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchItems())
 	}, [])
 

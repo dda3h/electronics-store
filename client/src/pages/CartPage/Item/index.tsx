@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +9,7 @@ import { CartService } from '../../../services'
 
 import styles from './styles.module.scss'
 
-export default function Item(item: TItem): React.ReactElement {
+export default function Item(item: TItem) {
 	const dispatch = useDispatch()
 
 	const { id: userId } = useSelector(getUser)

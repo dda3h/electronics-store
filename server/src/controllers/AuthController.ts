@@ -21,8 +21,8 @@ export async function registration(req: Request, res: Response, next: NextFuncti
 		})
 
 		return res.json(userData)
-	} catch (err) {
-		next(err)
+	} catch (e) {
+		next(e)
 	}
 }
 
@@ -31,8 +31,8 @@ export async function verify(req: Request, res: Response, next: NextFunction) {
 		const verificationLink = req.params.link
 		await AuthService.verify(verificationLink)
 		return res.redirect(process.env.CLIENT_URL!)
-	} catch (err) {
-		next(err)
+	} catch (e) {
+		next(e)
 	}
 }
 
@@ -47,8 +47,8 @@ export async function login(req: Request, res: Response, next: NextFunction) {
 		})
 
 		return res.json(userData)
-	} catch (err) {
-		next(err)
+	} catch (e) {
+		next(e)
 	}
 }
 
@@ -60,8 +60,8 @@ export async function logout(req: Request, res: Response, next: NextFunction) {
 		res.clearCookie('refreshToken')
 
 		return res.json(token)
-	} catch (err) {
-		next(err)
+	} catch (e) {
+		next(e)
 	}
 }
 
@@ -76,7 +76,7 @@ export async function refresh(req: Request, res: Response, next: NextFunction) {
 		})
 
 		return res.json(userData)
-	} catch (err) {
-		next(err)
+	} catch (e) {
+		next(e)
 	}
 }

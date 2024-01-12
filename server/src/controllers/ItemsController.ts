@@ -6,8 +6,8 @@ export async function getAll(req: Request, res: Response) {
 	try {
 		const items = await ItemsService.getAll()
 		return res.json(items)
-	} catch (err) {
-		console.error(err)
+	} catch (e) {
+		console.error(e)
 	}
 }
 
@@ -16,7 +16,7 @@ export async function getById(req: Request, res: Response) {
 		const { id } = req.params
 		const item = await ItemsService.getById(Number(id))
 		return res.json(item)
-	} catch (err) {
-		console.error(err)
+	} catch (e) {
+		console.error(e)
 	}
 }

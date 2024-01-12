@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '../../redux/store'
@@ -10,12 +10,12 @@ import Item from './Item'
 
 import styles from './styles.module.scss'
 
-export default function HomePage(): React.ReactElement {
+export default function HomePage() {
 	const dispatch = useAppDispatch()
 
 	const items = useSelector(getItemsArray)
 
-	React.useEffect(() => {
+	useEffect(() => {
 		dispatch(fetchItems())
 	}, [])
 
@@ -24,8 +24,8 @@ export default function HomePage(): React.ReactElement {
 			<Slider />
 
 			<div className={styles.items}>
-				{items.map((item, index) => (
-					<Item {...item} key={index} />
+				{items.map((item, i) => (
+					<Item {...item} key={i} />
 				))}
 			</div>
 		</div>

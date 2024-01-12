@@ -1,11 +1,8 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-
 import { TItems } from '../../../../types'
-
 import styles from './styles.module.scss'
 
-export default function Item(item: TItems): React.ReactElement {
+export default function Item(item: TItems) {
 	return (
 		<div className={styles.wrapper}>
 			<Link to={`/item/${item.id}`}>

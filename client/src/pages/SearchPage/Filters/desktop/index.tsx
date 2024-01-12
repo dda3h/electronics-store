@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import SortFilter from './Sort'
@@ -18,7 +17,7 @@ interface Props {
 	allFiltersIndex: number
 }
 
-export default function FiltersDesktop({ activeFilter, setActiveFilter, allFiltersIndex }: Props): React.ReactElement {
+export default function FiltersDesktop({ activeFilter, setActiveFilter, allFiltersIndex }: Props) {
 	const [searchParams] = useSearchParams()
 
 	const sortParam = searchParams.get('sort')?.replace(/_/g, ' ') || 'By popularity'
@@ -44,12 +43,12 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 
 	return (
 		<div className={styles.wrapper}>
-			{filters.map((filter, index) => (
-				<div className={styles.filterBlock} key={index}>
+			{filters.map((filter, i) => (
+				<div className={styles.filterBlock} key={i}>
 					<button
-						onClick={() => changeFilter(index + 1)}
+						onClick={() => changeFilter(i + 1)}
 						className={
-							activeFilter === index + 1
+							activeFilter === i + 1
 								? `${styles.button} ${styles['button--active']}`
 								: styles.button
 						}
@@ -66,7 +65,7 @@ export default function FiltersDesktop({ activeFilter, setActiveFilter, allFilte
 					</button>
 
 					<div
-						style={activeFilter === index + 1 ? {} : { display: 'none' }}
+						style={activeFilter === i + 1 ? {} : { display: 'none' }}
 						className={styles.filterMenu}
 					>
 						{filter.html}

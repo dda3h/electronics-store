@@ -26,7 +26,7 @@ $api.interceptors.response.use(
 				)
 				localStorage.setItem('accessToken', response.data.accessToken)
 				return $api.request(originalRequest)
-			} catch (err) {
+			} catch (e) {
 				console.error('Unauthorized')
 			}
 		}

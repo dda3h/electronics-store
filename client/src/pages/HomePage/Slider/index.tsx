@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import { slides } from './slides'
@@ -8,11 +8,11 @@ import RightArrow from '../../../icons/arrows/RightArrow'
 
 import styles from './styles.module.scss'
 
-export default function Slider(): React.ReactElement {
-	const [activeSlideIndex, setActiveSlideIndex] = React.useState(0)
-	const autoNextTimer = React.useRef(0)
+export default function Slider() {
+	const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+	const autoNextTimer = useRef(0)
 
-	const [isAutoNext, setIsAutoNext] = React.useState(true)
+	const [isAutoNext, setIsAutoNext] = useState(true)
 
 	function changeImage(type: 'next' | 'prev') {
 		if (type === 'next' && activeSlideIndex === slides.length - 1) {
@@ -26,7 +26,7 @@ export default function Slider(): React.ReactElement {
 		setActiveSlideIndex(activeSlideIndex + (type === 'next' ? 1 : -1))
 	}
 
-	React.useEffect(() => {
+	useEffect(() => {
 		clearTimeout(autoNextTimer.current)
 		if (isAutoNext) {
 			autoNextTimer.current = setTimeout(() => changeImage('next'), 5000)
@@ -39,8 +39,8 @@ export default function Slider(): React.ReactElement {
 				style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}
 				className={styles.images}
 			>
-				{slides.map((slide, index) => (
-					<img src={slide.image} className={styles.image} key={index} />
+				{slides.map((slide, i) => (
+					<img src={slide.image} className={styles.image} key={i} />
 				))}
 			</div>
 

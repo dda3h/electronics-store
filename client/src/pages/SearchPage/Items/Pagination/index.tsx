@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import ThinLeftArrow from '../../../../icons/arrows/ThinLeftArrow'
@@ -6,7 +5,7 @@ import ThinRightArrow from '../../../../icons/arrows/ThinRightArrow'
 
 import styles from './styles.module.scss'
 
-export default function Pagination({ pageCount }: { pageCount: number }): React.ReactElement {
+export default function Pagination({ pageCount }: { pageCount: number }) {
 	const [searchParams, setSearchParams] = useSearchParams()
 
 	const currentPage = Number(searchParams.get('page')) || 1
@@ -48,11 +47,11 @@ export default function Pagination({ pageCount }: { pageCount: number }): React.
 			</button>
 
 			<div className={styles.numbers}>
-				{(allNumbers.length > 5 ? numbers : allNumbers).map((number, index) => (
+				{(allNumbers.length > 5 ? numbers : allNumbers).map((number, i) => (
 					<button
 						onClick={() => changePage(number)}
 						className={`${styles.button} ${number === currentPage ? styles['button--active'] : ''}`}
-						key={index}
+						key={i}
 					>
 						{number}
 					</button>

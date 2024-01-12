@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import useFilteredFilters from '../../../hooks/useFilteredFilters'
@@ -13,7 +12,7 @@ interface Props {
 	list: 1 | 2
 }
 
-export default function CheckFilter({ param, list }: Props): React.ReactElement {
+export default function CheckFilter({ param, list }: Props) {
 	const filterList = useFilteredFilters(list)
 	const changeFilter = useChangeFilter()
 	const [searchParams] = useSearchParams()
@@ -23,20 +22,17 @@ export default function CheckFilter({ param, list }: Props): React.ReactElement 
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.filters}>
-				{filterList.map((filter, index) => (
+				{filterList.map((filter, i) => (
 					<button
-						onClick={() => changeFilter({ filterList, index, param })}
+						onClick={() => changeFilter({ filterList, index: i, param })}
 						className={
 							filterParams
 								?.split(' ')
-								.find(
-									filterParam =>
-										filterParam === filter.name.replace(/ /g, '_')
-								)
+								.find(filterParam => filterParam === filter.name.replace(/ /g, '_'))
 								? `${styles.button} ${styles.button__active}`
 								: styles.button
 						}
-						key={index}
+						key={i}
 					>
 						<span className={styles.button__check}>
 							<CheckSVG />

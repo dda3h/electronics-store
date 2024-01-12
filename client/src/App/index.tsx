@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -22,7 +22,7 @@ import Footer from '../components/Footer'
 
 import styles from './styles.module.scss'
 
-export default function App(): React.ReactElement {
+export default function App() {
 	const dispatch = useDispatch()
 
 	const cartItemList = useSelector(getCartItemList)
@@ -36,7 +36,7 @@ export default function App(): React.ReactElement {
 	const checkAuth = AuthService.useCheckAuth()
 	const updateCart = AuthService.useUpdateCart()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		(async () => {
 			if (isRefreshed) {
 				localStorage.setItem('cart', JSON.stringify(await CartService.getCart(userId)))
@@ -45,16 +45,16 @@ export default function App(): React.ReactElement {
 		})()
 	}, [isRefreshed])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (isLogged && !isRefreshed) updateCart()
 	}, [isLogged])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const json = JSON.stringify(cartItemList)
 		localStorage.setItem('cart', json)
 	}, [cartItemList])
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (localStorage.getItem('accessToken')) checkAuth()
 	}, [])
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useSelector } from 'react-redux'
@@ -14,20 +14,20 @@ import CrossedOutEyeSVG from '../../icons/CossedOutEye'
 
 import styles from './styles.module.scss'
 
-export default function SignupPage(): React.ReactElement {
+export default function SignupPage() {
 	const navigate = useNavigate()
 
 	const isLogged = useSelector(getIsLogged)
 
-	const [name, setName] = React.useState('')
-	const [email, setEmail] = React.useState('')
-	const [password, setPassword] = React.useState('')
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 
-	const [showPassword, setShowPassword] = React.useState(false)
+	const [showPassword, setShowPassword] = useState(false)
 
 	const registration = AuthService.useRegistration()
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (isLogged) navigate('/account')
 	}, [isLogged])
 
@@ -83,11 +83,9 @@ export default function SignupPage(): React.ReactElement {
 					className={styles.input}
 				/>
 				<button onClick={() => setShowPassword(!showPassword)}>
-					{showPassword ? (
-						<CrossedOutEyeSVG className={styles.hidePasswordSvg} />
-					) : (
-						<EyeSVG className={styles.hidePasswordSvg} />
-					)}
+					{showPassword 
+						? <CrossedOutEyeSVG className={styles.hidePasswordSvg} />
+						: <EyeSVG className={styles.hidePasswordSvg} />}
 				</button>
 			</div>
 
