@@ -1,4 +1,4 @@
-const ThinRightArrow = ({ className }: { className?: string }) => (
+export const ThinRightArrow = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 1024 1024'
@@ -11,5 +11,3 @@ const ThinRightArrow = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default ThinRightArrow

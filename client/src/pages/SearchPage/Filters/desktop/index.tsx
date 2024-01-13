@@ -5,11 +5,9 @@ import CheckFilter from './CheckFilter'
 import PriceFilter from './Price'
 import AllFilters from './AllFilters'
 
-import DownArrow from '../../../../icons/arrows/DownArrow'
-import ArrowsDownUpSVG from '../../../../icons/arrows/ArrowsDownUp'
-import SettingsSVG from '../../../../icons/Settings'
+import { DownArrow, ArrowsDownUpSVG, SettingsSVG } from '../../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './Desktop.module.scss'
 
 interface Props {
 	activeFilter: number

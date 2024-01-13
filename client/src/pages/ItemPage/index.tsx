@@ -13,7 +13,7 @@ import { CartService } from '../../services'
 
 import { Status } from '../../types'
 
-import styles from './styles.module.scss'
+import styles from './ItemPage.module.scss'
 
 export default function ItemPage() {
 	const params = useParams()

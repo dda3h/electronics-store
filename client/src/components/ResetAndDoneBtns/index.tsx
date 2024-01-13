@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import styles from './ResetAndDoneBtns.module.scss'
 
 interface Props {
 	condition?: boolean

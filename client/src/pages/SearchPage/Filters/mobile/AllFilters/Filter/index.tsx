@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import useFilteredFilters from '../../../hooks/useFilteredFilters'
 import useChangeFilter from '../../../hooks/useChangeFilter'
 
-import styles from './styles.module.scss'
+import styles from './Filter.module.scss'
 
 interface Props {
 	param: string

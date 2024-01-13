@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { slides } from './slides'
 
-import LeftArrow from '../../../icons/arrows/LeftArrow'
-import RightArrow from '../../../icons/arrows/RightArrow'
+import { LeftArrow, RightArrow } from '../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './Slider.module.scss'
 
 export default function Slider() {
 	const [activeSlideIndex, setActiveSlideIndex] = useState(0)

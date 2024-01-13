@@ -1,4 +1,4 @@
-const LoginSVG = ({ className }: { className?: string }) => (
+export const LoginSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='-2 -1 24 24'
@@ -19,5 +19,3 @@ const LoginSVG = ({ className }: { className?: string }) => (
 		</g>
 	</svg>
 )
-
-export default LoginSVG

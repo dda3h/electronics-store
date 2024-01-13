@@ -1,4 +1,4 @@
-const EyeSVG = ({ className }: { className?: string }) => (
+export const EyeSVG = ({ className }: { className?: string }) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
 		fill='none'
@@ -20,5 +20,3 @@ const EyeSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default EyeSVG

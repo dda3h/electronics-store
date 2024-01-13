@@ -6,13 +6,9 @@ import { getIsLogged } from '../../redux/reducers/user/selectors'
 
 import { AuthService } from '../../services'
 
-import AddUserSVG from '../../icons/AddUser'
-import EmailSVG from '../../icons/Email'
-import LockSVG from '../../icons/Lock'
-import EyeSVG from '../../icons/Eye'
-import CrossedOutEyeSVG from '../../icons/CossedOutEye'
+import { AddUserSVG, EmailSVG, LockSVG, EyeSVG, CrossedOutEyeSVG } from '../../icons'
 
-import styles from './styles.module.scss'
+import styles from './Auth.module.scss'
 
 export default function SignupPage() {
 	const navigate = useNavigate()

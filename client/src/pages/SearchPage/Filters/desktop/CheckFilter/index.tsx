@@ -5,9 +5,9 @@ import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns'
 import useFilteredFilters from '../../hooks/useFilteredFilters'
 import useChangeFilter from '../../hooks/useChangeFilter'
 
-import CheckSVG from '../../../../../icons/Check'
+import { CheckSVG } from '../../../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './CheckFilter.module.scss'
 
 interface Props {
 	param: string

@@ -4,11 +4,9 @@ import { useSelector } from 'react-redux'
 import { getCartItemsQuantity } from '../../../redux/reducers/cart/selectors'
 import { getIsLogged } from '../../../redux/reducers/user/selectors'
 
-import HomeSVG from '../../../icons/Home'
-import LoginSVG from '../../../icons/Login'
-import CartSVG from '../../../icons/Cart'
+import { HomeSVG, LoginSVG, CartSVG } from '../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './NavBar.module.scss'
 
 export default function NavBar() {
 	const itemsQuantity = useSelector(getCartItemsQuantity)

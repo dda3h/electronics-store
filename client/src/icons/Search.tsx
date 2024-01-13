@@ -1,4 +1,4 @@
-const SearchSVG = ({ className }: { className?: string }) => (
+export const SearchSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 24 24'
@@ -14,5 +14,3 @@ const SearchSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default SearchSVG

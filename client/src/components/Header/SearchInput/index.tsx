@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
-import SearchSVG from '../../../icons/Search'
-import CloseSVG from '../../../icons/Close'
+import { SearchSVG, CloseSVG } from '../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './SearchInput.module.scss'
 
 export default function Search() {
 	const [inputValue, setInputValue] = useState('')

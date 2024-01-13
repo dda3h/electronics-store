@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './styles.module.scss'
+import styles from './PressButton.module.scss'
 
 interface Props {
 	link?: string

@@ -5,7 +5,7 @@ import ResetAndDoneBtns from '../../../../../components/ResetAndDoneBtns'
 
 import getPrices from '../../hooks/usePrices'
 
-import styles from './styles.module.scss'
+import styles from './Price.module.scss'
 
 export default function PriceFilter({ closeFilter }: { closeFilter: () => void }) {
 	const [searchParams, setSearchParams] = useSearchParams()

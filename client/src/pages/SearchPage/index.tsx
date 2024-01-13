@@ -11,7 +11,7 @@ import FiltersDesktop from './Filters/desktop'
 import FiltersMobile from './Filters/mobile'
 import Items from './Items'
 
-import styles from './styles.module.scss'
+import styles from './SearchPage.module.scss'
 
 export default function SearchPage() {
 	const dispatch = useAppDispatch()
@@ -19,8 +19,9 @@ export default function SearchPage() {
 	const [searchParams] = useSearchParams()
 
 	const query = searchParams.get('query')
+	const category = searchParams.get('category')
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-	const [activeFilter, setActiveFilter] = useState<number>(0)
+	const [activeFilter, setActiveFilter] = useState(0)
 	const allFiltersIndex = 5
 
 	const status = useSelector(getItemsStatus)
@@ -44,8 +45,9 @@ export default function SearchPage() {
 		dispatch(fetchItems())
 	}, [location.pathname])
 
-	if (status === Status.PENDING)
+	if (status === Status.PENDING) {
 		return <h1 className={styles.statusHeader}>Loading...</h1>
+	}
 
 	if (!data.length && status === Status.FULFILLED) {
 		return (
@@ -55,12 +57,15 @@ export default function SearchPage() {
 		)
 	}
 
-	if (status === Status.REJECTED)
+	if (status === Status.REJECTED) {
 		return <h1 className={styles.statusHeader}>Failed to get items :(</h1>
+	}
 
 	return (
 		<div className={styles.wrapper}>
-			<h1 className={styles.header}>Search results for "{query}"</h1>
+			<h1 className={styles.header}>
+				Search results for {query ? `"${query}"` : category}
+			</h1>
 
 			{windowWidth > 1023 ? (
 				<FiltersDesktop

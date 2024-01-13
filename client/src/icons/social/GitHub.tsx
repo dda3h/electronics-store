@@ -1,4 +1,4 @@
-const GitHubSVG = ({ className }: { className?: string }) => (
+export const GitHubSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 73 73'
@@ -30,5 +30,3 @@ const GitHubSVG = ({ className }: { className?: string }) => (
 		</g>
 	</svg>
 )
-
-export default GitHubSVG

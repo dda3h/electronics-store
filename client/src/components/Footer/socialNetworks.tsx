@@ -1,7 +1,5 @@
-import TelegramSVG from '../../icons/social/Telegram'
-import GitHubSVG from '../../icons/social/GitHub'
-
-import styles from './styles.module.scss'
+import { TelegramSVG, GitHubSVG } from '../../icons'
+import styles from './Footer.module.scss'
 
 export const socialNetworks = [
 	{

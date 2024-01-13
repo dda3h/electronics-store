@@ -1,4 +1,4 @@
-const TelegramSVG = ({ className }: { className?: string }) => (
+export const TelegramSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		xmlns='http://www.w3.org/2000/svg'
@@ -15,5 +15,3 @@ const TelegramSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default TelegramSVG

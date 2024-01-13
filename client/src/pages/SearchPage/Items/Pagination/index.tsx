@@ -1,9 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
-
-import ThinLeftArrow from '../../../../icons/arrows/ThinLeftArrow'
-import ThinRightArrow from '../../../../icons/arrows/ThinRightArrow'
-
-import styles from './styles.module.scss'
+import { ThinLeftArrow, ThinRightArrow } from '../../../../icons'
+import styles from './Pagination.module.scss'
 
 export default function Pagination({ pageCount }: { pageCount: number }) {
 	const [searchParams, setSearchParams] = useSearchParams()

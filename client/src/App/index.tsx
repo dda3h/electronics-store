@@ -20,7 +20,7 @@ import NotFoundPage from '../pages/NotFoundPage'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-import styles from './styles.module.scss'
+import styles from './App.module.scss'
 
 export default function App() {
 	const dispatch = useDispatch()

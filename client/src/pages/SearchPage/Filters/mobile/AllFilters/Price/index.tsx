@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import getPrices from '../../../hooks/usePrices'
 
-import styles from './styles.module.scss'
+import styles from './Price.module.scss'
 
 export default function PriceFilter() {
 	const [searchParams, setSearchParams] = useSearchParams()

@@ -6,7 +6,7 @@ import NotFound from './NotFound'
 
 import useFilteredData from './useFilteredData'
 
-import styles from './styles.module.scss'
+import styles from './Items.module.scss'
 
 export default function Items() {
 	const data = useFilteredData()

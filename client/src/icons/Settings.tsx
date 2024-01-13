@@ -1,4 +1,4 @@
-const SettingsSVG = ({ className }: { className?: string }) => (
+export const SettingsSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='-0.5 0 25 25'
@@ -49,5 +49,3 @@ const SettingsSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default SettingsSVG

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Search from './SearchInput'
 import NavBar from './NavBar'
 
-import styles from './styles.module.scss'
+import styles from './Header.module.scss'
 
 export default function Header() {
 	return (

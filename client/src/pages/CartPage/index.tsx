@@ -10,7 +10,7 @@ import Item from './Item'
 
 import { TItem } from '../../types'
 
-import styles from './styles.module.scss'
+import styles from './CartPage.module.scss'
 
 export default function CartPage() {
 	const { itemList, itemsQuantity } = useSelector(getCartState)

@@ -6,7 +6,7 @@ import { getIsLogged, getUser } from '../../redux/reducers/user/selectors'
 
 import { AuthService } from '../../services'
 
-import styles from './styles.module.scss'
+import styles from './AccountPage.module.scss'
 
 export default function AccountPage() {
 	const navigate = useNavigate()

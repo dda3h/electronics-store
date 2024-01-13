@@ -3,10 +3,9 @@ import { useSearchParams } from 'react-router-dom'
 
 import AllFilters from './AllFilters'
 
-import ListSVG from '../../../../icons/List'
-import SettingsSVG from '../../../../icons/Settings'
+import { ListSVG, SettingsSVG } from '../../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './Mobile.module.scss'
 
 interface Props {
 	activeFilter: number

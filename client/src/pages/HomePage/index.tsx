@@ -8,7 +8,7 @@ import { getItemsArray } from '../../redux/reducers/items/selectors'
 import Slider from './Slider'
 import Item from './Item'
 
-import styles from './styles.module.scss'
+import styles from './HomePage.module.scss'
 
 export default function HomePage() {
 	const dispatch = useAppDispatch()

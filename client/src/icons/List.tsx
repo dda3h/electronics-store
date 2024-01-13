@@ -1,4 +1,4 @@
-const ListSVG = ({ className }: { className?: string }) => (
+export const ListSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 20 20'
@@ -37,5 +37,3 @@ const ListSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default ListSVG

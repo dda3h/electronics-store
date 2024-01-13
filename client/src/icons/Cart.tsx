@@ -1,4 +1,4 @@
-const CartSVG = ({ className }: { className?: string }) => (
+export const CartSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='-1 0 26 26'
@@ -14,5 +14,3 @@ const CartSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default CartSVG

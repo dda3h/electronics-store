@@ -1,4 +1,4 @@
-const RightArrow = ({ className }: { className?: string }) => (
+export const RightArrow = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 24 24'
@@ -11,5 +11,3 @@ const RightArrow = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default RightArrow

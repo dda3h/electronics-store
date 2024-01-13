@@ -1,10 +1,10 @@
 import PressButton from '../../../components/PressButton'
-import styles from './styles.module.scss'
+import styles from './EmptyCart.module.scss'
 
 export default function EmptyCart() {
 	return (
 		<div className={styles.wrapper}>
-			<img src='src/assets/images/empty-cart.png' className={styles.image} />
+			<img src='/src/assets/images/empty-cart.png' className={styles.image} />
 
 			<h1 className={styles.header}>
 				Looks like your cart is empty

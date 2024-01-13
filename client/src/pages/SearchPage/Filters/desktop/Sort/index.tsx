@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
-import styles from './styles.module.scss'
+import styles from './Sort.module.scss'
 
 const sortList = ['By popularity', 'By rating', 'Cheap first', 'Expensive first']
 

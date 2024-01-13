@@ -1,4 +1,4 @@
-const TrashSVG = ({ className }: { className: string }) => (
+export const TrashSVG = ({ className }: { className: string }) => (
 	<svg
 		className={className}
 		viewBox='0 0 24 24'
@@ -14,5 +14,3 @@ const TrashSVG = ({ className }: { className: string }) => (
 		/>
 	</svg>
 )
-
-export default TrashSVG

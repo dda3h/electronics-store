@@ -6,10 +6,9 @@ import { getIsLogged, getUser } from '../../../redux/reducers/user/selectors'
 
 import { CartService } from '../../../services'
 
-import CartSVG from '../../../icons/Cart'
-import TrashSVG from '../../../icons/Trash'
+import { CartSVG, TrashSVG } from '../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './Header.module.scss'
 
 export default function Header() {
 	const dispatch = useDispatch()

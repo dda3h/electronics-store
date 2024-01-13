@@ -7,9 +7,9 @@ import Filter from './Filter'
 import useFilteredFilters from '../../hooks/useFilteredFilters'
 import useFilteredData from '../../../Items/useFilteredData'
 
-import CloseSVG from '../../../../../icons/Close'
+import { CloseSVG } from '../../../../../icons'
 
-import styles from './styles.module.scss'
+import styles from './AllFilters.module.scss'
 
 interface Props {
 	closeFilter: () => void

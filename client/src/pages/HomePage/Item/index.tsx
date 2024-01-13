@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { TItems } from '../../../types.js'
-import styles from './styles.module.scss'
+import styles from './Item.module.scss'
 
 export default function Item(item: TItems) {
 	return (

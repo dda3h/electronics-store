@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import styles from './styles.module.scss'
+import styles from './NotFound.module.scss'
 
 export default function NotFound() {
 	const navigate = useNavigate()

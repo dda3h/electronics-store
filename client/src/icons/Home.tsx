@@ -1,4 +1,4 @@
-const HomeSVG = ({ className }: { className?: string }) => (
+export const HomeSVG = ({ className }: { className?: string }) => (
 	<svg
 		className={className}
 		viewBox='0 -1 24 24'
@@ -13,5 +13,3 @@ const HomeSVG = ({ className }: { className?: string }) => (
 		/>
 	</svg>
 )
-
-export default HomeSVG
