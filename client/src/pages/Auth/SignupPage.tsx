@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
-import { getIsLogged } from '../../redux/reducers/user/selectors'
+import { useDispatch, useSelector } from 'react-redux'
+import { setError } from '../../redux/reducers/user/slice'
+import { getError, getIsLogged } from '../../redux/reducers/user/selectors'
 
 import { AuthService } from '../../services'
 
@@ -12,8 +13,10 @@ import styles from './Auth.module.scss'
 
 export default function SignupPage() {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
 	const isLogged = useSelector(getIsLogged)
+	const error = useSelector(getError)
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -26,6 +29,12 @@ export default function SignupPage() {
 	useEffect(() => {
 		if (isLogged) navigate('/account')
 	}, [isLogged])
+
+	useEffect(() => {
+		return () => {
+			dispatch(setError(''))
+		}
+	}, [])
 
 	return (
 		<div className={styles.wrapper}>
@@ -91,6 +100,10 @@ export default function SignupPage() {
 			>
 				Create Account
 			</button>
+
+			{error && (
+				<p className={styles.signup} style={{ color: '#ff0000' }}>{error}</p>
+			)}
 
 			<div style={{ textAlign: 'end', display: 'flex', marginTop: '0.3rem' }}>
 				<p className={styles.signup}>

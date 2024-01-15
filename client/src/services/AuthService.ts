@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart, updateItemList } from '../redux/reducers/cart/slice'
-import { setIsLogged, setIsRefreshed, setUser } from '../redux/reducers/user/slice'
+import { setError, setIsLogged, setIsRefreshed, setUser } from '../redux/reducers/user/slice'
 import { getUser } from '../redux/reducers/user/selectors'
 import { getCartItemList } from '../redux/reducers/cart/selectors'
 
@@ -24,7 +24,7 @@ export function useLogin() {
 			dispatch(setIsRefreshed(false))
 			dispatch(setIsLogged(true))
 		} catch (e: any) {
-			console.error(e.response?.data?.message)
+			dispatch(setError(e.response?.data?.message))
 		}
 	}
 
@@ -42,7 +42,7 @@ export function useRegistration() {
 			dispatch(setIsRefreshed(false))
 			dispatch(setIsLogged(true))
 		} catch (e: any) {
-			console.error(e.response?.data?.message)
+			dispatch(setError(e.response?.data?.message))
 		}
 	}
 

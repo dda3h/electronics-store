@@ -4,6 +4,7 @@ export interface UserState {
 	user: IUser
 	isLogged: boolean
 	isRefreshed: boolean
+	error: string
 }
 
 export interface ILoginProps {
