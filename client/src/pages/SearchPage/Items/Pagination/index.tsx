@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { ThinLeftArrow, ThinRightArrow } from '../../../../icons'
 import styles from './Pagination.module.scss'
@@ -11,29 +12,21 @@ export default function Pagination({ pageCount }: { pageCount: number }) {
 	const lastIndex = currentPage > 2 ? currentPage + 2 : 5
 	const numbers = allNumbers.slice(firstIndex, lastIndex)
 
-	function prevPage() {
-		if (currentPage === 1) return
-
-		searchParams.set('page', String(currentPage - 1))
-		setSearchParams(searchParams)
-	}
-
-	function nextPage() {
-		if (currentPage === pageCount) return
-
-		searchParams.set('page', String(currentPage + 1))
-		setSearchParams(searchParams)
-	}
-
 	function changePage(number: number) {
+		if (number < 1 || number > pageCount) return
 		searchParams.set('page', String(number))
 		setSearchParams(searchParams)
 	}
 
+	useEffect(() => {
+		if (currentPage < 1) changePage(1)
+		if (currentPage > pageCount) changePage(pageCount)
+	}, [])
+
 	return (
 		<div className={styles.wrapper}>
 			<button
-				onClick={prevPage}
+				onClick={() => changePage(currentPage - 1)}
 				className={`${styles.button} ${styles.borderless} ${
 					currentPage === 1 ? styles['button--disabled'] : ''
 				}`}
@@ -56,7 +49,7 @@ export default function Pagination({ pageCount }: { pageCount: number }) {
 			</div>
 
 			<button
-				onClick={nextPage}
+				onClick={() => changePage(currentPage + 1)}
 				className={`${styles.button} ${styles.borderless} ${
 					currentPage === pageCount ? styles['button--disabled'] : ''
 				}`}

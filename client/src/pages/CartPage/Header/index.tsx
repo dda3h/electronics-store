@@ -29,7 +29,7 @@ export default function Header() {
 				<CartSVG className={styles.logo__svg} />
 
 				<h1 className={styles.logo__title}>
-					Cart<span>{itemsQuantity}</span>
+					Cart <span>{itemsQuantity}</span>
 				</h1>
 			</div>
 
