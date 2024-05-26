@@ -1,3 +1,5 @@
+<div align="center">
+
 ![](screenshot.png)
 
 ![React](https://img.shields.io/badge/React-%23087EA4.svg?style=for-the-badge&logo=react&logoColor=white)
@@ -7,9 +9,13 @@
 ![Express](https://img.shields.io/badge/express-%23FEFEFE.svg?style=for-the-badge&logo=express&logoColor=black)
 ![MySQL](https://img.shields.io/badge/mysql-%2347809D.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
-# About
+</div>
+
+---
 
 Electronics Store is my pet project. It features many popular things like the ability to add items to the cart, an account system for saving the cart, search for items with filters, and much more.
+
+---
 
 # How to run it locally
 
