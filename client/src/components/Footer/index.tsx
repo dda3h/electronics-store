@@ -15,7 +15,7 @@ export default function Footer() {
 			</div>
 
 			<h1 className={styles.text}>
-				1912-2036 &copy; nentennens <br /> All rights unguarded.
+				1912-2036 &copy; dda3h <br /> All rights unguarded.
 			</h1>
 		</footer>
 	)

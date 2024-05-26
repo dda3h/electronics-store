@@ -8,10 +8,7 @@ export default function NotFound() {
 	const query = searchParams.get('query') || ''
 
 	function resetFilters() {
-		const uriQuery = encodeURIComponent(query.replace(/\s+/g, ' ').trim()).replace(
-			/%20/g,
-			'+'
-		)
+		const uriQuery = encodeURIComponent(query.replace(/\s+/g, ' ').trim()).replace(/%20/g, '+')
 		navigate(`/search?query=${uriQuery}`)
 	}
 

@@ -1,5 +1,4 @@
 ![](screenshot.png)
-<br />
 
 ![React](https://img.shields.io/badge/React-%23087EA4.svg?style=for-the-badge&logo=react&logoColor=white)
 ![Redux](https://img.shields.io/badge/redux-%23764ABC.svg?style=for-the-badge&logo=redux&logoColor=white)
@@ -37,7 +36,7 @@ In both client and server folders run these commands:
 
 The project should be running on [localhost:3000](http://localhost:3000). Everything should work except the account system.
 
-To be able to log into the account you must be running a MySQL database. If you have one, enter there the commands from the [mysql_init_scripts/init.sql](https://github.com/nentennens/electronics_store/blob/master/mysql_init_scripts/init.sql) file to configure the database and create the required tables.
+To be able to log into the account you must be running a MySQL database. If you have one, enter there the commands from the `mysql_init_scripts/init.sql` file to configure the database and create the required tables.
 
 You may also need to change the password for the database or some other variables in server .env, depending on your setup.
 
